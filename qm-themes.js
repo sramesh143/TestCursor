@@ -9,7 +9,7 @@
       swatch: ["#0F172A", "#2563EB", "#F8FAFC"],
       vars: {
         "--nav": "#1E293B", "--nav-2": "#0F172A", "--nav-accent": "#2563EB", "--nav-active": "#2563EB",
-        "--nav-text": "#E2E8F0", "--nav-muted": "#94A3B8", "--logo-accent": "#60A5FA",
+        "--nav-text": "#E2E8F0", "--nav-muted": "#ffffff", "--logo-accent": "#60A5FA",
         "--primary": "#2563EB", "--primary-dk": "#1D4ED8", "--primary-lt": "#EFF6FF",
         "--menu-panel": "#FFFFFF", "--menu-panel-hd": "#F8FAFC", "--menu-hover": "#F1F5F9",
         "--menu-active": "#EFF6FF", "--menu-active-bd": "#BFDBFE", "--page": "#F1F5F9"

@@ -540,10 +540,10 @@
       '<span class="qm-avatar qm-avatar-sm">MA</span></button>' +
       '<div class="qm-user-panel" role="menu">' +
       '<div class="qm-user-head">' +
-      '<span class="qm-avatar qm-avatar-lg">MA</span>' +
-      '<div class="qm-user-head-meta"><strong>Mohamed Anaz</strong>' +
-      '<small>m.anaz@target-arabia.com</small>' +
-      '<span class="qm-user-role">Account Manager · Riyadh Branch</span></div></div>' +
+      '<span class="qm-avatar qm-avatar-lg">SR</span>' +
+      '<div class="qm-user-head-meta"><strong>S Ramesh</strong>' +
+      '<small>ramesh@xyz.com</small>' +
+      '<span class="qm-user-role">Account Manager</span></div></div>' +
       '<div class="qm-user-divider"></div>' +
       '<a class="qm-user-link" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.5-6 8-6s8 2 8 6"/></svg>My Profile</a>' +
       '<a class="qm-user-link" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>Account Info</a>' +

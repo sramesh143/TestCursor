@@ -537,7 +537,7 @@
     wrap.className = "qm-user-wrap";
     wrap.innerHTML =
       '<button type="button" class="qm-user-btn" aria-haspopup="true" aria-expanded="false" title="User account">' +
-      '<span class="qm-avatar qm-avatar-sm">MA</span></button>' +
+      '<span class="qm-avatar qm-avatar-sm">SR</span></button>' +
       '<div class="qm-user-panel" role="menu">' +
       '<div class="qm-user-head">' +
       '<span class="qm-avatar qm-avatar-lg">SR</span>' +

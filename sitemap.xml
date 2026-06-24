@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<siteMap>
+  <Home id="1" DisplayName="Home" URL="../Service/ViewCustomerAssign.aspx?Menu=Home">
+    <Menu id="4" url="../Service/ViewCustomerAssign.aspx?Menu=Home" title="Queries" IsSubMenu="False"/>
+    <Menu id="2" url="../Common/SharedDocument.aspx?Menu=Home" title="Repository" IsSubMenu="False"/>
+    <Menu id="1" url="../Common/DashboardPage.aspx?Menu=Home" title="DashBoardNew" IsSubMenu="False"/>
+  </Home>
+  <Marketing id="2" DisplayName="Marketing" URL="../CRM/ViewLeads.aspx?Menu=Marketing">
+    <Menu id="2" url="../CRM/ViewLeads.aspx?Menu=Marketing" title="Target List" IsSubMenu="False"/>
+    <Menu id="8" url="../Marketing/ViewCampaignTemplate.aspx?Menu=Marketing" title="Campaigns" IsSubMenu="True">
+      <SubMenu id="1" url="../Marketing/ViewCampaignTemplate.aspx?Menu=Marketing" title="Templates"/>
+      <SubMenu id="2" url="../Common/ViewSmsTemplate.aspx?Menu=Marketing" title="Sms Templates"/>
+      <SubMenu id="3" url="../Marketing/ViewTargetList.aspx?Menu=Marketing" title="Recipient List"/>
+      <SubMenu id="4" url="../Marketing/ViewCampaign.aspx?Menu=Marketing" title="Activities"/>
+      <SubMenu id="5" url="../Marketing/ViewCampaignExecution.aspx?Menu=Marketing" title="Launch"/>
+      <SubMenu id="6" url="../Marketing/ViewCampaignResponse.aspx?Menu=Marketing" title="Responses"/>
+    </Menu>
+  </Marketing>
+  <Sales id="3" DisplayName="Sales" URL="../Service/ViewEnquiry.aspx?Menu=Sales">
+    <Menu id="8" url="../CRM/ViewLeads.aspx?Menu=Sales" title="Target List" IsSubMenu="False"/>
+    <Menu id="2" url="../Service/ViewEnquiry.aspx?Menu=Sales" title="Enquiry" IsSubMenu="False"/>
+    <Menu id="80" url="../Service/ViewSurveyDetails.aspx?Menu=Sales" title="Survey" IsSubMenu="False"/>
+    <Menu id="10" url="../Service/ViewCostingDetails.aspx?Menu=Sales" title="Costing" IsSubMenu="False"/>
+    <Menu id="11" url="../Service/ViewQuotationDetails.aspx?Menu=Sales" title="Quotes" IsSubMenu="False"/>
+    <Menu id="60" url="../Service/ViewContract.aspx?Menu=Sales" title="Contracts" IsSubMenu="False"/>
+    <Menu id="9" url="../Service/ViewRateRequest.aspx?Menu=Sales" title="Rate Request" IsSubMenu="False"/>
+    <Menu id="61" url="../Service/ViewAgentEnquiries.aspx?Menu=Sales" title="Rate Response" IsSubMenu="False"/>
+    <Menu id="3" url="../Service/ViewCustomer.aspx?Menu=Sales" title="Accounts" IsSubMenu="True">
+      <SubMenu id="1" url="../Service/ViewCustomer.aspx?Menu=Sales" title="Individuals"/>
+      <SubMenu id="2" url="../Service/ViewCorporateCustomer.aspx?Menu=Sales" title="Organizations"/>
+    </Menu>
+    <Menu id="66" url="../Service/ViewContact.aspx?Menu=Sales&amp;IsAccount=false" title="Contacts" IsSubMenu="False"/>
+    <Menu id="5" url="../Service/ViewOrganization.aspx?Menu=Sales&amp;IsAccount=false" title="Organizations" IsSubMenu="False"/>
+    <Menu id="7" url="../CRM/ViewCompetitor.aspx?Menu=Sales" title="Competitors" IsSubMenu="False"/>
+    <Menu id="13" url="../Billing/ViewInvoice.aspx?Menu=Sales" title="Invoices" IsSubMenu="False"/>
+    <Menu id="4" url="../Service/ViewSalesPlanningDetails.aspx?Menu=Sales" title="Sales Funnel" IsSubMenu="False"/>
+    <Menu id="112" url="../Shipping/ShipmentAvailability.aspx?Menu=Sales" title="Available FCL" IsSubMenu="False"/>
+    <Menu id="131" url="../Shipping/ShipmentAvailableConsole.aspx?Menu=Sales" title="Available Groupage" IsSubMenu="False"/>
+    <Menu id="134" url="../Service/ViewVendorRate.aspx?Menu=Sales" title="Vendor Rates" IsSubMenu="False"/>
+  </Sales>
+  <Services id="4" DisplayName="Customer Services" URL="../Service/ViewOrder.aspx?Menu=Services">
+    <Menu id="11" url="../Service/ViewQuotationDetails.aspx?Menu=Services" title="Quotes" IsSubMenu="False"/>
+    <Menu id="4" url="../Service/ViewOrder.aspx?Menu=Services" title="Job Orders" IsSubMenu="False"/>
+    <Menu id="6" url="../Service/ViewJobOrderConfirmations.aspx?Menu=Services" title="Order Confirmation" IsSubMenu="False"/>
+    <Menu id="17" url="../Operation/ViewOperationJobs.aspx?Menu=Services&amp;Type=EXE" title="Jobs" IsSubMenu="False"/>
+    <Menu id="16" url="../Service/ViewInstructionToAgent.aspx?Menu=Services" title="Instruction To Agent" IsSubMenu="False"/>
+    <Menu id="8" url="../Service/ViewAcknowledgement.aspx?Menu=Services" title="Acknowledgements" IsSubMenu="False"/>
+    <Menu id="14" url="../Service/ViewCustomerFeedback.aspx?Menu=Services" title="Customer Feedback" IsSubMenu="False"/>
+    <Menu id="9" url="../Service/ViewInsurance.aspx?Menu=Services" title="Insurance" IsSubMenu="False"/>
+    <Menu id="18" url="../Service/ViewClaims.aspx?Menu=Services" title="Claims" IsSubMenu="False"/>
+    <Menu id="2" url="../Service/ViewCases.aspx?Menu=Services" title="Complaints" IsSubMenu="False"/>
+    <Menu id="3" url="../Service/ViewCustomer.aspx?Menu=Services" title="Accounts" IsSubMenu="True">
+      <SubMenu id="1" url="../Service/ViewCustomer.aspx?Menu=Services" title="Individuals"/>
+      <SubMenu id="2" url="../Service/ViewCorporateCustomer.aspx?Menu=Services" title="Organizations"/>
+    </Menu>
+    <Menu id="13" url="../Billing/ViewInvoice.aspx?Menu=Services" title="Invoices" IsSubMenu="False"/>
+    <Menu id="19" url="../Service/ViewTrackStatus.aspx?Menu=Services" title="Track Status" IsSubMenu="False"/>
+    <Menu id="20" url="../Warehouse/ViewWarehouseJobDetails.aspx?Menu=Services" title="Zone Logistics" IsSubMenu="False"/>
+    <Menu id="21" url="../Service/ViewJobOrderDirectCosting.aspx?Menu=Services?Menu=Services" title="Direct Costing" IsSubMenu="False"/>
+  </Services>
+  <Operation id="5" DisplayName="Operation" URL="../Operation/ViewOperationJobs.aspx?Menu=Operation&amp;Type=EXE">
+    <Menu id="1" url="../Service/ViewOrder.aspx?Menu=Operation" title="Job Order" IsSubMenu="False"/>
+    <Menu id="3" url="../Operation/ViewOperationJobs.aspx?Menu=Operation&amp;Type=EXE" title="Jobs" IsSubMenu="False"/>
+    <Menu id="13" url="../Operation/ViewResource.aspx?Menu=Operation&amp;Type=Plan" title="Resource Projection" IsSubMenu="False"/>
+    <Menu id="7" url="../Billing/ViewJobExpenses.aspx?Menu=Operation" title="Job Expenses" IsSubMenu="False"/>
+    <Menu id="5" url="../Operation/ResourceChart.aspx?Menu=Operation" title="Resource Availability" IsSubMenu="False"/>
+    <Menu id="9" url="../Operation/ViewTransitStorage.aspx?Menu=Operation" title="Transit Storage" IsSubMenu="False"/>
+    <Menu id="10" url="../AgentServices/ViewDeliveryNote.aspx?Menu=Shipping" title="Delivery Notes" IsSubMenu="False"/>
+    <Menu id="11" url="../Operation/ViewLabels.aspx?Menu=Operation" title="Labels" IsSubMenu="False"/>
+    <Menu id="17" url="../Procurement/ViewGoodsConsumed.aspx?Menu=Operation" title="Material ReceiptReturn" IsSubMenu="False"/>
+    <Menu id="18" url="../Service/ViewInsurance.aspx?Menu=Operation" title="Insurance" IsSubMenu="False"/>
+    <Menu id="20" url="../Operation/ViewCheckListReport.aspx?Menu=Operation" title="Pre Packing Summary" IsSubMenu="False"/>
+    <Menu id="21" url="../Operation/ViewLoadingandUnloadingReport.aspx?Menu=Operation" title="Loading and Unloading Summary" IsSubMenu="False"/>
+    <Menu id="22" url="../Operation/ViewHandymanServices.aspx?Menu=Operation" title="Handyman Summary" IsSubMenu="False"/>
+    <Menu id="23" url="../Operation/ViewAdditionalServices.aspx?Menu=Operation" title="Additional Services" IsSubMenu="False"/>
+    <Menu id="24" url="../Common/ViewOverTimeHourEmployees.aspx?Menu=Operation" title="OverTime Hour Employees" IsSubMenu="False"/>
+    <Menu id="25" url="../Common/ViewOverTimeHours.aspx?Menu=Operation" title="OverTime Hours" IsSubMenu="False"/>
+    <Menu id="26" url="../Service/ViewDeliveryOrder.aspx?Menu=Services" title="Delivery Order" IsSubMenu="False"/>
+  </Operation>
+  <Shipping id="6" DisplayName="Shipping" URL="../Shipping/ViewOutBoundShipment.aspx?Menu=Shipping">
+    <Menu id="7" url="../Shipping/ViewShipmentJobOrder.aspx?Menu=Shipping&amp;Type=Outbound" title="Job Order" IsSubMenu="True">
+      <SubMenu id="1" url="../Shipping/ViewShipmentJobOrder.aspx?Menu=Shipping&amp;Type=Outbound" title="Outbound"/>
+      <SubMenu id="2" url="../Shipping/ViewShipmentJobOrder.aspx?Menu=Shipping&amp;Type=Inbound" title="Inbound"/>
+    </Menu>
+    <Menu id="2" url="../Shipping/ViewOutBoundShipment.aspx?Menu=Shipping" title="Outbound" IsSubMenu="False"/>
+    <Menu id="1" url="../Shipping/ViewInboundShipment.aspx?Menu=Shipping" title="Inbound" IsSubMenu="False"/>
+    <Menu id="12" url="../Shipping/ShipmentAvailability.aspx?Menu=Shipping" title="Available FCL " IsSubMenu="False"/>
+    <Menu id="13" url="../Shipping/ShipmentAvailableConsole.aspx?Menu=Shipping" title="Available Gropage" IsSubMenu="False"/>
+    <Menu id="16" url="../Shipping/ViewOutBoundGroupage.aspx?Menu=Shipping" title="OutBound Groupage" IsSubMenu="False"/>
+    <Menu id="17" url="../Shipping/ViewInboundGroupage.aspx?Menu=Shipping" title="Inbound Groupage" IsSubMenu="False"/>
+    <Menu id="9" url="../Operation/ViewTransitStorage.aspx?Menu=Shipping" title="Transit Storage" IsSubMenu="False"/>
+    <Menu id="10" url="../Billing/ViewJobExpenses.aspx?Menu=Shipping" title="Job Expenses" IsSubMenu="False"/>
+    <Menu id="14" url="../AgentServices/ViewDeliveryNote.aspx?Menu=Shipping" title="Delivery Notes" IsSubMenu="False"/>
+    <Menu id="18" url="../Service/ViewDeliveryOrder.aspx?Menu=Services" title="Delivery Order" IsSubMenu="False"/>
+    <Menu id="19" url="../Shipping/ViewShipmentForecast.aspx?Menu=Shipping" title="Shipment Forecast" IsSubMenu="False"/>
+    <Menu id="20" url="../Shipping/ViewVesselMaster.aspx?Menu=Shipping" title="Vessel Master" IsSubMenu="False"/>
+    <Menu id="21" url="../TMS/ViewContainerTrack.aspx?Menu=TMS" title="Container" IsSubMenu="False"/>
+  </Shipping>
+  <Storage id="7" DisplayName="Storage" URL="../Warehouse/ViewStorageJobs.aspx?Menu=Storage">
+    <Menu id="7" url="../Service/ViewOrder.aspx?Menu=Storage" title="Job Order" IsSubMenu="False"/>
+    <Menu id="1" url="../Warehouse/ViewStorageJobs.aspx?Menu=Storage&amp;Type=EXE" title="Jobs" IsSubMenu="False"/>
+    <Menu id="3" url="../Warehouse/ViewWarehouseReceiveDetails.aspx?Menu=Storage" title="Put Away" IsSubMenu="False"/>
+    <Menu id="4" url="../Warehouse/ViewWarehouseIssueDetails.aspx?Menu=Storage" title="Pick List" IsSubMenu="False"/>
+    <Menu id="6" url="../Billing/ViewJobExpenses.aspx?Menu=Storage" title="Job Expenses" IsSubMenu="False"/>
+    <Menu id="10" url="../Warehouse/ViewReceivableDetails.aspx?Menu=Storage" title="Billing Cycle" IsSubMenu="False"/>
+    <Menu id="8" url="../AgentServices/ViewDeliveryNote.aspx?Menu=Storage" title="Delivery Note" IsSubMenu="False"/>
+    <Menu id="2" url="../Warehouse/ViewWarehouse.aspx?Menu=Storage&amp;Type=Storage" title="Warehouse" IsSubMenu="False"/>
+    <Menu id="11" url="../Operation/ViewResource.aspx?Menu=Storage&amp;Type=Plan" title="Resource Projection" IsSubMenu="False"/>
+    <Menu id="12" url="../Operation/ResourceChart.aspx?Menu=Storage" title="Resource Availability" IsSubMenu="False"/>
+    <Menu id="13" url="../Operation/ViewLabels.aspx?Menu=Operation" title="Labels" IsSubMenu="False"/>
+    <Menu id="14" url="javaScript:openWarehouseLebelsPreview();" title="Warehouse Lebels" IsSubMenu="False"/>
+    <Menu id="15" url="../Warehouse/ViewWarehouseCustomBilling.aspx?Menu=Storage" title="Warehouse Custom Billing" IsSubMenu="False"/>
+    <Menu id="17" url="../Warehouse/StorageOverview.aspx?Menu=Storage" title="Storage Overview" IsSubMenu="False"/>
+    <Menu id="18" url="../Warehouse/ViewWarehouseJobDetails.aspx?Menu=Storage" title="Storage Inventory List" IsSubMenu="False"/>
+    <Menu id="19" url="../Warehouse/ViewStorageCustomers.aspx?Menu=Storage" title="Storage Customer" IsSubMenu="False"/>
+  </Storage>
+  <TMS id="25" DisplayName="TMS" URL="../TMS/Trip.aspx?Menu=TMS">
+    <Menu id="10" url="../Service/ViewOrder.aspx?Menu=TMS" title="Job Orders" IsSubMenu="False"/>
+    <Menu id="1" url="../TMS/ViewTrip.aspx?Menu=TMS" title="Trip" IsSubMenu="False"/>
+    <Menu id="2" url="../TMS/ViewVehicleMaster.aspx?Menu=TMS" title="Vehicle" IsSubMenu="False"/>
+    <Menu id="5" url="../TMS/ViewFleet.aspx?Menu=TMS" title="Trailer" IsSubMenu="False"/>
+    <Menu id="12" url="../TMS/ViewDrivers.aspx?Menu=TMS" title="Drivers" IsSubMenu="False"/>
+    <Menu id="8" url="../Billing/ViewJobExpenses.aspx?Menu=Accounts" title="Expenses" IsSubMenu="False"/>
+    <Menu id="4" url="../TMS/ViewHUB.aspx?Menu=TMS" title="HUB" IsSubMenu="False"/>
+    <Menu id="3" url="../TMS/ViewContainerTrack.aspx?Menu=TMS" title="Container" IsSubMenu="False"/>
+  </TMS>
+  <Procurement id="10" DisplayName="Vendor Management" URL="../Procurement/ViewPurchaseRequests.aspx?Menu=Procurement">
+    <Menu id="1" url="../Procurement/ViewIndividualVendor.aspx?Menu=Procurement" title="Vendor" IsSubMenu="True">
+      <SubMenu id="1" url="../Procurement/ViewIndividualVendor.aspx?Menu=Procurement" title="Individuals"/>
+      <SubMenu id="2" url="../Procurement/ViewOrganisationalVendor.aspx?Menu=Procurement&amp;Type=Inner" title="Organizations"/>
+    </Menu>
+    <Menu id="4" url="../Procurement/ViewContract.aspx?Menu=Procurement" title="Contract" IsSubMenu="False"/>
+    <Menu id="5" url="../Procurement/ViewPurchaseRequests.aspx?Menu=Procurement" title="Purchase Request" IsSubMenu="False"/>
+    <Menu id="7" url="../Procurement/ViewPurchaseOrders.aspx?Menu=Procurement" title="Purchase Order" IsSubMenu="False"/>
+    <Menu id="8" url="../Procurement/ViewGoodReceived.aspx?Menu=Procurement" title="Good Received" IsSubMenu="False"/>
+    <Menu id="12" url="../Procurement/ViewGoodsReturned.aspx?Menu=Procurement" title="Good Returned" IsSubMenu="False"/>
+    <Menu id="9" url="../Procurement/ViewPackingMaterialStock.aspx?Menu=Procurement" title="Inventory StockOverview " IsSubMenu="False"/>
+    <Menu id="13" url="../Procurement/ViewGoodsConsumed.aspx?Menu=Procurement" title="Inventory Receipt Return" IsSubMenu="False"/>
+    <Menu id="10" url="../AgentServices/ViewContainerDetails.aspx?Menu=Procurement" title="Service Receipt" IsSubMenu="False"/>
+    <Menu id="11" url="../Procurement/ViewInvoice.aspx?Menu=Procurement" title="Invoice" IsSubMenu="False"/>
+    <Menu id="14" url="../Procurement/ViewCreditNote.aspx?Menu=Procurement" title="Vendor Debit Note" IsSubMenu="False"/>
+    <Menu id="15" url="../Procurement/ViewProcurementStockTransfer.aspx?Menu=Procurement" title="Stock Transfer" IsSubMenu="False"/>
+    <Menu id="16" url="../Procurement/ViewStockDecution.aspx?Menu=Procurement" title="Inventory Deduction" IsSubMenu="False"/>
+    <Menu id="17" url="../Account/ViewChequeRequest.aspx?Menu=Procurement" title="Payment Request" IsSubMenu="False"/>
+    <Menu id="18" url="../Procurement/ViewConsumableInventryDetails.aspx?Menu=Procurement" title="Consumable Inventory List" IsSubMenu="False"/>
+  </Procurement>
+  <Billing id="11" DisplayName="Billing" URL="../Billing/ViewInvoice.aspx?Menu=Billing">
+    <Menu id="5" url="../Service/ViewOrder.aspx?Menu=Billing" title="Job Orders" IsSubMenu="False"/>
+    <Menu id="1" url="../Billing/ViewInvoice.aspx?Menu=Billing" title="Invoice" IsSubMenu="True">
+      <SubMenu id="1" url="../Billing/ViewInvoice.aspx?Menu=Billing" title="Invoice"/>
+    </Menu>
+    <Menu id="4" url="../Account/ViewReceiptVoucher.aspx?Menu=Billing" title="Receipt Voucher" IsSubMenu="False"/>
+    <Menu id="2" url="../Billing/ViewCreditMemo.aspx?Menu=Billing" title="Credit Note" IsSubMenu="False"/>
+    <Menu id="3" url="../Billing/ViewDebitMemo.aspx?Menu=Billing" title="Debit Note" IsSubMenu="False"/>
+    <Menu id="9" url="../Service/ViewInsurance.aspx?Menu=Billing" title="Insurance" IsSubMenu="False"/>
+  </Billing>
+  <Accounts id="12" DisplayName="Accounts" URL="../Billing/ViewInvoice.aspx?Menu=Accounts">
+    <Menu id="27" url="../Service/ViewOrder.aspx?Menu=Accounts" title="Job Orders" IsSubMenu="False"/>
+    <Menu id="3" title="Masters" url="../Service/ViewCustomer.aspx?Menu=Accounts" IsSubMenu="True">
+      <SubMenu id="1" url="../Service/ViewCustomer.aspx?Menu=Accounts" title="Individuals Customer"/>
+      <SubMenu id="2" url="../Service/ViewCorporateCustomer.aspx?Menu=Accounts" title="Organizations Customer"/>
+      <SubMenu id="3" url="../Procurement/ViewIndividualVendor.aspx?Menu=Accounts" title="Individuals Vendor"/>
+      <SubMenu id="4" url="../Procurement/ViewOrganisationalVendor.aspx?Menu=Accounts&amp;Type=Inner" title="Organizations Vendor"/>
+      <SubMenu id="5" title="Opening Balance" url="../Account/ViewOpeningBalance.aspx?Menu=Accounts"/>
+    </Menu>
+    <Menu id="2" title="Voucher" url="../Account/ViewReceiptVoucher.aspx?Menu=Accounts" IsSubMenu="True">
+      <SubMenu id="1" url="../Account/ViewReceiptVoucher.aspx?Menu=Accounts" title="Receipt Voucher"/>
+      <SubMenu id="2" url="../Account/ViewPaymentVoucher.aspx?Menu=Accounts" title="Payment Voucher"/>
+      <SubMenu id="7" url="../Billing/ViewInvoice.aspx?Menu=Accounts" title="Invoice"/>
+      <SubMenu id="11" url="../Account/ViewContra.aspx?Menu=Accounts" title="Contra"/>
+      <SubMenu id="3" url="../Billing/ViewCreditMemo.aspx?Menu=Accounts" title="Credit Note"/>
+      <SubMenu id="4" url="../Billing/ViewDebitMemo.aspx?Menu=Accounts" title="Debit Note"/>
+      <SubMenu id="5" url="../Account/ViewJournalVoucher.aspx?Menu=Accounts" title="Journal Voucher"/>
+      <SubMenu id="6" url="../Billing/ViewJobExpenses.aspx?Menu=Accounts" title="Expenses"/>
+      <SubMenu id="8" url="../Account/ViewAccountPurchaseOrder.aspx?Menu=Accounts" title="Purchase Order"/>
+      <SubMenu id="9" url="../Procurement/ViewInvoice.aspx?Menu=Accounts" title="Vendor Invoice"/>
+      <SubMenu id="10" url="../Common/DaybookSetting.aspx" title="Daybook"/>
+      <SubMenu id="11" url="../Account/ViewChequeRequest.aspx" title="Cheque Request"/>
+    </Menu>
+    <Menu id="4" title="PDC Transfer" url="../Account/Reconcilation.aspx?Menu=Accounts" IsSubMenu="False"/>
+    <Menu id="15" title="Bank Reconciliation" url="../Account/BankReconcilation.aspx?Menu=Accounts" IsSubMenu="false"/>
+    <Menu id="1" title="Ledger" url="../Admin/Bank.aspx?Menu=Accounts" IsSubMenu="True">
+      <SubMenu id="1" title="Account Master" url="javaScript:OpenBillingLedgerReport()"/>
+      <SubMenu id="2" title="Ledger Master" url="javaScript:OpenAccountsGLedgerReport()"/>
+      <SubMenu id="3" url="../Admin/Bank.aspx?Menu=Accounts" title="Bank"/>
+      <SubMenu id="4" title="Statement Of Accounts" url="javaScript:OpenStatementOfAccountsReport()"/>
+      <SubMenu id="5" url="javaScript:AssetMasterReport();" title="Asset Master"/>
+    </Menu>
+    <Menu id="7" title="Financials" url="#" IsSubMenu="True">
+      <SubMenu id="7" title="Trial Balance" url="javaScript:OpenBillingTrialBalanceReport()"/>
+      <SubMenu id="10" title="Profit and Loss" url="javaScript:OpenBillingProfitandLossReport()"/>
+      <SubMenu id="16" title="Balance Sheet" url="javaScript:OpenBillingBalanceSheetReport()"/>
+      <SubMenu id="26" title="Budget" url="../Account/ViewBudget.aspx?Menu=Accounts"/>
+      <SubMenu id="27" title="Financial Overview" url="javaScript:OpenFinancialOverviewReport()"/>
+      <SubMenu id="28" title="Overhead Overview" url="javaScript:openOverheadReport()"/>
+      <SubMenu id="29" title="Margin Assurance Summary" url="javaScript:openCostElementReport();"/>
+      <SubMenu id="30" title="Tax Return Summary" url="javaScript:OpenTaxReturnSummaryNew();"/>
+    </Menu>
+    <Menu id="18" url="../Service/ViewInsurance.aspx?Menu=Accounts" title="Insurance" IsSubMenu="False"/>
+    <Menu id="5" url="../Admin/BillingConfiguration.aspx?Menu=Accounts" title="Configuration" IsSubMenu="False"/>
+    <Menu id="25" url="../Procurement/ViewAssetStock.aspx?Menu=Accounts" title="Asset" IsSubMenu="false"/>
+    <Menu id="26" url="../Account/UsedProvisionCost.aspx?Menu=Accounts" title="Used Provision" IsSubMenu="False"/>
+    <Menu id="28" url="../Account/UnUsedProvisionCost.aspx?Menu=Accounts" title="UnUsed Provision" IsSubMenu="False"/>
+    <Menu id="29" url="../Procurement/ContractAsset.aspx?Menu=Accounts" title="Contract Asset" IsSubMenu="False"/>
+    <Menu id="30" url="javaScript:OpenSezLocationReport()" title="Sez Location Report" IsSubMenu="False"/>
+  </Accounts>
+  <HR id="14" DisplayName="HR" URL="../HR/ViewHREmployee.aspx?Menu=HR">
+    <Menu id="1" url="../HR/ViewHREmployee.aspx?Menu=HR" title="Employee" IsSubMenu="False"/>
+    <Menu id="2" url="../HR/ViewEmployeeLoginHistory.aspx?Menu=HR" title="Login History" IsSubMenu="False"/>
+    <Menu id="3" url="../HR/ViewLeaveRequest.aspx?Menu=HR" title="Leave Request" IsSubMenu="False"/>
+    <Menu id="4" url="../HR/ViewPayRoll.aspx?Menu=HR" title="PayRoll" IsSubMenu="False"/>
+    <Menu id="5" url="../HR/ViewAuditTrail.aspx?Menu=HR" title="Audit Trail" IsSubMenu="False"/>
+    <Menu id="6" url="../HR/LeaveAllocate.aspx?Menu=HR" title="Leave Allocation" IsSubMenu="False"/>
+    <Menu id="7" url="../Common/ViewOverTimeHourEmployees.aspx?Menu=Operation" title="OverTime Hour " IsSubMenu="False"/>
+  </HR>
+  <Reports id="23" DisplayName="Reports" URL="../Common/Reports.aspx?Menu=Reports">
+    <Menu id="3" url="../Common/Reports.aspx?Menu=Reports" title="Sales" IsSubMenu="True">
+      <SubMenu id="26" url="javaScript:OpenAccountTrackerRecord();" title="Account Tracker Summary"/>
+      <SubMenu id="2" url="javaScript:openBranchAnalyisReport();" title="Branch Analysis Summary"/>
+      <SubMenu id="9" url="javaScript:openCostingVsQuotationAnalysis();" title="Costing Vs Quotation Analysis"/>
+      <SubMenu id="13" url="javaScript:OpenCustomerwiseSalesActivity();" title="Customerwise Sales Activity"/>
+      <SubMenu id="15" url="javaScript:OpenAgentwiseShipmentDetailsReport();" title="Daily/ Monthly OA, DA Summary"/>
+      <SubMenu id="18" url="javaScript:OpenDailyBasedBusinessReport();" title="Daily Business Analysis"/>
+      <SubMenu id="10" url="javaScript:openEnquiryAnalysis();" title="SOC Analysis"/>
+      <SubMenu id="20" url="javaScript:OpenEnquiryVsSurveyReport();" title="Enquiry to Survey Analysis"/>
+      <SubMenu id="21" url="javaScript:OpenEnquiryVsSurveyVsQuotationReport();" title="Enquiry to Quotation Analysis"/>
+      <SubMenu id="22" url="javaScript:openEnquiryVsSurveyVsQuotationsReport();" title="Enquiry to JobOrder Analysis"/>
+      <SubMenu id="17" url="javaScript:OpenLocationBasedBusinessReport();" title="Location Analysis Summary"/>
+      <SubMenu id="27" url="javaScript:OpenLocationTypeReport();" title="Location Analysis Summary"/>
+      <SubMenu id="12" url="javaScript:OpenOrganizationWiseActivity();" title="Organization Activity Summary"/>
+      <SubMenu id="5" url="javaScript:openPlannedvsQuotedNBooked();" title="Planned vs Actual Summary"/>
+      <SubMenu id="1" url="javaScript:openNewTab();" title="Quoted Vs Booked Summary"/>
+      <SubMenu id="4" url="javaScript:openTeamAnalysisSegmentWise();" title="Segment Wise TA"/>
+      <SubMenu id="14" url="javaScript:OpenNewSurveyourReport();" title="Surveyor Report"/>
+      <SubMenu id="24" url="javaScript:OpenSurveyourAnalysisReport();" title="Surveyor Analysis Summary"/>
+      <SubMenu id="3" url="javaScript:openTeamAnalysis();" title="Team Analysis Summary"/>
+      <SubMenu id="6" url="javaScript:openTrackAnalysis();" title="Track Analysis Summary"/>
+      <SubMenu id="11" url="javaScript:openWebQueryAnalysis();" title="WebQuery Analysis Summary"/>
+      <SubMenu id="19" url="javaScript:OpenYearlyComparisionBusinessReport();" title="Corporate Comparision Summary"/>
+      <SubMenu id="29" url="javaScript:OpenEnquiryTimeAnalysisReport();" title="Enquiry Time Analysis Summary"/>
+      <SubMenu id="30" url="javaScript:OpenEODAnalysis();" title="Origin to Destination Summary"/>
+      <SubMenu id="31" url="javaScript:openQuotationStatusReport();" title="Quotation Summary"/>
+      <SubMenu id="32" url="javaScript:openWeeklyExecutedBookedReport();" title="Weekly Booked Services Summary"/>
+      <SubMenu id="33" url="javaScript:openEnquiryReportNew();" title="Enquiry Overview Summary"/>
+      <SubMenu id="34" url="javaScript:openVIPAccountReport();" title="VIP Account Summary"/>
+      <SubMenu id="35" url="javaScript:openBusinessSegmentOverviewReport();" title="Segement Overview"/>
+      <SubMenu id="36" url="javaScript:openBusinessOverview();" title="Business Overview"/>
+    </Menu>
+    <Menu id="4" url="../Common/Reports.aspx?Menu=Reports" title="Service" IsSubMenu="True">
+      <SubMenu id="1" url="javaScript:OpenComplaintsAnalysis();" title="Complaint Summary"/>
+      <SubMenu id="2" url="javaScript:OpenClaimSettlementAnalysis();" title="Claim Settlement Summary"/>
+      <SubMenu id="5" url="javaScript:OpenInsuranceReport();" title="Insurance Summary"/>
+      <SubMenu id="4" url="javaScript:QuotedInsuranceVsJobOrderInsurance();" title="JobOrder Insurance Summary"/>
+      <SubMenu id="3" url="javaScript:OpenServiceReportJQ();" title="Services Report "/>
+      <SubMenu id="8" url="javaScript:OpenJobPackDeliveryDate();" title="JobOrder Summary"/>
+      <SubMenu id="9" url="javaScript:OpenCustomerFeedbackJQ();" title="Customer feedback Summary"/>
+      <SubMenu id="10" url="javaScript:OpenPendingCustomerFeedbackJQ();" title=" Pending Customer Feedback Report"/>
+      <SubMenu id="11" url="javascript:OpenJobDetailJQ();" title="Job Detail Report"/>
+    </Menu>
+    <Menu id="5" url="../Common/Reports.aspx?Menu=Reports" title="Operation" IsSubMenu="True">
+      <SubMenu id="5" url="javaScript:OpenpackingmaterialConsumptionReport();" title=" Material Consumption Summary"/>
+      <SubMenu id="3" url="javaScript:OpenSegmentWiseTeamAnalysis();" title="Segmentwise Team Analysis"/>
+      <SubMenu id="1" url="javaScript:OpenSupervisiorAnalysisJQ();" title="Supervisor Analysis Report"/>
+      <SubMenu id="2" url="javaScript:OpenOperationTeamAnalysis();" title="Team Analysis"/>
+      <SubMenu id="4" url="javaScript:OpenJobTrackAnalysisAnalysis();" title="OverTime Analysis"/>
+      <SubMenu id="6" url="javaScript:OpenOperationSummaryReport();" title="Operation Summary"/>
+      <SubMenu id="7" url="javaScript:openMonthlyStaffUtilizationReport();" title="Monthly Staff utilization Report"/>
+      <SubMenu id="8" url="javaScript:OpenOperationTransitStorageBilling();" title="Transit Storage Billing"/>
+      <SubMenu id="9" url="javaScript:OpenMaterialStockReportJQ();" title="Material Stock Report"/>
+      <SubMenu id="10" url="javaScript:OpenStockOverviewReport();" title="Stock Overview Report"/>
+      <SubMenu id="11" url="javaScript:OpenConsumableMaterialReport();" title="Consumable Material Report"/>
+    </Menu>
+    <Menu id="6" url="../Common/Reports.aspx?Menu=Reports" title="Shipping" IsSubMenu="True">
+      <SubMenu id="3" url="javaScript:OpenShipmentTrackAnalysisReport();" title="Shipment Track Analysis"/>
+      <SubMenu id="1" url="javaScript:OpenInboundShipmentAnalysisReport();" title="Inbound Shipment Analysis"/>
+      <SubMenu id="2" url="javaScript:OpenoutboundShipmentAnalysisReport();" title="OutBound Shipment Analysis"/>
+      <SubMenu id="4" url="javaScript:openCustomClearanceReport();" title="Custom Clearance Summary"/>
+    </Menu>
+    <Menu id="7" url="../Common/Reports.aspx?Menu=Reports" title="Storage" IsSubMenu="True">
+      <SubMenu id="1" url="javaScript:OpenWarehouseWiseReport();" title="Warehouse Summary"/>
+      <SubMenu id="3" url="javaScript:openWarehouseTransitStorageReport();" title="Transit Storage Summary"/>
+      <SubMenu id="4" url="javaScript:openConsolidateStorageReportJQ();" title="Consolidate Storage Report"/>
+    </Menu>
+    <Menu id="8" url="../Common/Reports.aspx?Menu=Reports" title="Agent Services" IsSubMenu="True">
+      <SubMenu id="1" url="javaScript:openTonnageReport();" title="Tonnage Overview Report"/>
+      <SubMenu id="2" url="javaScript:openAgentAnalysis();" title="Tonnage Reciprocity"/>
+      <SubMenu id="3" url="javaScript:OpenAgentCustomerReport();" title="Agent Customer Summary"/>
+      <SubMenu id="4" url="javaScript:openAgentRevenueAnalysis();" title="Agent Wise Summary"/>
+      <SubMenu id="23" url="javaScript:OpenYearlyAgentBusinessComparisionReport();" title="Agent Comparison Summary"/>
+      <SubMenu id="6" url="javaScript:OpenTonnageReportJQ();" title="Tonnage Summary"/>
+    </Menu>
+    <Menu id="9" url="../Common/Reports.aspx?Menu=Reports" title="Relo Service" IsSubMenu="False"/>
+    <Menu id="10" url="../Common/Reports.aspx?Menu=Reports" title="Procurement" IsSubMenu="False"/>
+    <Menu id="11" url="../Common/Reports.aspx?Menu=Reports" title="Billing" IsSubMenu="True">
+      <SubMenu id="7" url="javaScript:OpenCustomerWiseInvoiceJobExpenseReport();" title="Customer Wise Profit / Loss"/>
+      <SubMenu id="5" url="javaScript:openInvoiceReport();" title="Sales Detailed Summary"/>
+      <SubMenu id="6" url="javaScript:OpenInvoiceBillingReport();" title="Invoice Billing Analysis"/>
+      <SubMenu id="2" url="javaScript:openOutstandingReceivable();" title="Outstanding Receivable"/>
+      <SubMenu id="4" url="javaScript:openStorageBillingAnalysis();" title="Storage Billing Analysis"/>
+      <SubMenu id="8" url="javaScript:OpenReconciliationReport();" title="Reconciliation Summary"/>
+      <SubMenu id="9" url="javaScript:openRevenueReport();" title="Revenue Report"/>
+      <SubMenu id="10" url="javaScript:openOutstandingPayableReport();" title="Outstanding Payable"/>
+      <SubMenu id="11" url="javaScript:openPendingInvoiceReport();" title="Pending Invoice Report"/>
+      <SubMenu id="14" url="javaScript:openTAXReport();" title="Tax Summary"/>
+      <SubMenu id="15" url="javaScript:openPurchaseReport();" title="Purchase Detailed Summary"/>
+      <SubMenu id="19" url="javaScript:openEmployeeSalesReport();" title="Employee Sales Summary"/>
+      <SubMenu id="20" url="javaScript:openAccountReceivable();" title="Account Receivable"/>
+      <SubMenu id="21" url="javaScript:openTaxReturnSummary();" title="Tax Return Summary"/>
+      <SubMenu id="22" url="javaScript:OpenAgentBookedInvoice();" title="Vendor Booked Invoices Summary"/>
+      <SubMenu id="23" url="javaScript:OpenSalesOverview();" title="Sales Overview"/>
+      <SubMenu id="24" url="javaScript:OpenPurchaseOverview();" title="Purchase Overview"/>
+      <SubMenu id="25" url="javaScript:OpenTotalReceivable();" title="Total Receivable"/>
+      <SubMenu id="26" url="javaScript:OpenARReportOverView();" title="AR Overview"/>
+      <SubMenu id="27" url="javaScript:OpenARReport();" title="AR Overview Abstract"/>
+      <SubMenu id="28" url="javaScript:BillingCostSheetSummaryReport();" title="Cost Sheet Summary "/>
+      <SubMenu id="30" url="javaScript:OpenSalesPerformanceReportJQ();" title="SalesPerformance Report"/>
+      <SubMenu id="31" url="javaScript:OpenInvoiceRevenueReportJQ();" title="InvoiceRevenue Report"/>
+      <SubMenu id="33" url="javaScript:OpenInvoiceReportJQ();" title="Sales Report"/>
+      <SubMenu id="34" url="javaScript:OpenTDSJQReport();" title="TDS Report"/>
+      <SubMenu id="35" url="javascript:CustomerInvoiceGstReport();" title="GSTR Report"/>
+      <SubMenu id="36" url="javascript:CustomergstrHSNwiseReports();" title="GSTR ServiceCode Report"/>
+      <SubMenu id="37" url="javascript:CustomerWiseLedgerReport();" title="Customer Wise Ledger Report"/>
+      <SubMenu id="38" url="javascript:OpenOutstandingReceivableJQ();" title="Outstanding Receivable Report"/>
+      <SubMenu id="39" url="javascript:OpenSalesRevenueReportJQ();" title="Net Sales Report"/>
+      <SubMenu id="40" url="javascript:OpenProductVolumeWiseReport();" title="ProductWise Volume Report"/>
+      <SubMenu id="41" url="javascript:OpenProductWiseRevenue();" title="ProductWise Revenue Report"/>
+      <SubMenu id="42" url="javascript:OpenARAP();" title="ARAP Report"/>
+      <SubMenu id="43" url="javascript:OpenOutstandingPayableJQ();" title="OutstandingPayable Report"/>
+    </Menu>
+    <Menu id="12" url="../Common/Reports.aspx?Menu=Reports" title="Accounts" IsSubMenu="False"/>
+    <Menu id="13" url="../Common/Reports.aspx?Menu=Reports" title="HR" IsSubMenu="False"/>
+  </Reports>
+</siteMap>

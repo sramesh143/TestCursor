@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Common Enquiry · Quickmove CRM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --nav:#1E293B;
+    --nav-2:#0F172A;
+    --nav-accent:#2563EB;
+    --nav-active:#2563EB;
+    --nav-text:#E2E8F0;
+    --nav-muted:#94A3B8;
+    --logo-accent:#60A5FA;
+    --primary:#2563EB;
+    --primary-dk:#1D4ED8;
+    --primary-lt:#EFF6FF;
+    --ink:#0F172A;
+    --label:#64748B;
+    --line:#E2E8F0;
+    --line-2:#F1F5F9;
+    --page:#F1F5F9;
+    --card:#FFFFFF;
+    --tint:#F8FAFC;
+    --sect:#2563EB;
+    --menu-panel:#FFFFFF;
+    --menu-panel-hd:#F8FAFC;
+    --menu-hover:#F1F5F9;
+    --menu-active:#EFF6FF;
+    --menu-active-bd:#BFDBFE;
+    --green-bg:#DCFCE7; --green-tx:#15803D;
+    --blue-bg:#DBEAFE; --blue-tx:#1D4ED8;
+    --danger:#DC2626; --danger-bg:#FEF2F2; --danger-bd:#FBD0D0;
+    --req:#DC2626;
+    --shadow:0 1px 2px rgba(15,23,42,.05), 0 6px 18px rgba(15,23,42,.05);
+    --mega-shadow:0 16px 48px rgba(15,23,42,.14), 0 4px 12px rgba(15,23,42,.08);
+    --r:11px;
+    --qm-sidebar-w:268px;
+    --qm-topbar-h:54px;
+    --qm-menu-h:54px;
+    --form-max:1180px;
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;margin:0;padding:0;overflow:hidden;}
+  body{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    background:var(--page);color:var(--ink);font-size:13.5px;line-height:1.45;
+    -webkit-font-smoothing:antialiased;display:flex;flex-direction:column;}
+  #qm-menu-root{flex:none;position:relative;z-index:200;}
+  #qm-page-content{width:100%;flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;overflow:hidden;}
+  .qm-shell{display:flex;min-height:0;}
+  .qm-logo{font-weight:700;font-size:clamp(15px,1.1vw,20px);color:#fff;letter-spacing:-.3px;white-space:nowrap;}
+  .qm-logo b{color:var(--logo-accent,#60A5FA);}
+  .qm-ico{width:18px;height:18px;display:grid;place-items:center;flex:none;}
+  .qm-ico svg{width:16px;height:16px;display:block;}
+  .qm-chev{font-size:10px;opacity:.55;transition:transform .15s;}
+
+  /* primary top bar */
+  .qm-topbar{background:var(--nav-2);color:var(--nav-text);border-bottom:1px solid rgba(255,255,255,.06);}
+  .qm-topbar-inner{max-width:min(96vw,5600px);margin:0 auto;padding:0 clamp(12px,1.5vw,28px);height:var(--qm-topbar-h);
+    display:flex;align-items:center;gap:clamp(6px,1vw,14px);}
+  .qm-brand{display:flex;align-items:center;gap:10px;flex:none;}
+  .qm-hamburger{display:none;width:38px;height:38px;border:0;background:rgba(255,255,255,.08);border-radius:10px;
+    flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;padding:0;}
+  .qm-hamburger span{display:block;width:16px;height:2px;background:#fff;border-radius:2px;}
+  .qm-top-mods{display:flex;align-items:center;gap:3px;overflow-x:auto;flex:1;scrollbar-width:none;padding:4px 0;}
+  .qm-top-mods::-webkit-scrollbar{display:none;}
+  .qm-top-mod-wrap{position:relative;flex:none;}
+  .qm-top-mod-wrap::after{content:"";position:absolute;left:18%;right:18%;bottom:2px;height:2px;border-radius:2px;
+    background:var(--nav-accent);transform:scaleX(0);transition:transform .2s ease;pointer-events:none;}
+  .qm-top-mod-wrap:hover::after,.qm-top-mod-wrap.is-open::after{transform:scaleX(1);}
+  .qm-top-mod{display:inline-flex;align-items:center;gap:7px;border:0;background:transparent;color:var(--nav-muted);
+    font:inherit;font-size:clamp(11.5px,.85vw,13.5px);font-weight:600;padding:8px clamp(10px,1vw,14px);border-radius:10px;
+    cursor:pointer;white-space:nowrap;transition:background .15s,color .15s,box-shadow .15s;}
+  .qm-mod-chev{font-size:8px;opacity:.45;margin-left:-2px;}
+  .qm-top-mod-wrap.is-open .qm-mod-chev,.qm-top-mod-wrap:hover .qm-mod-chev{opacity:.85;transform:rotate(180deg);}
+  .qm-top-mod:hover{background:rgba(255,255,255,.08);color:#fff;}
+  .qm-top-mod.is-active{background:rgba(255,255,255,.1);color:#fff;}
+  .qm-top-mod-wrap.is-open .qm-top-mod{background:linear-gradient(135deg,var(--nav-accent),#1d4ed8);color:#fff;
+    box-shadow:0 4px 14px rgba(37,99,235,.35);}
+  .qm-top-tools{display:flex;align-items:center;gap:8px;flex:none;margin-left:auto;}
+  .qm-search-wrap{position:relative;display:flex;align-items:center;}
+  .qm-search{font:inherit;font-size:12px;width:clamp(120px,14vw,220px);padding:8px 10px 8px 32px;
+    border:1px solid rgba(255,255,255,.12);border-radius:10px;background:rgba(255,255,255,.06);color:#fff;}
+  .qm-search::placeholder{color:rgba(255,255,255,.45);}
+  .qm-search:focus{outline:none;border-color:rgba(96,165,250,.5);background:rgba(255,255,255,.1);box-shadow:0 0 0 3px rgba(37,99,235,.2);}
+  .qm-search-ico{position:absolute;left:11px;opacity:.55;font-size:13px;pointer-events:none;}
+  .qm-tool-btn{width:36px;height:36px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);
+    color:var(--nav-text);border-radius:10px;display:grid;place-items:center;cursor:pointer;transition:.15s;}
+  .qm-tool-btn:hover{background:rgba(255,255,255,.12);color:#fff;}
+  .qm-tool-btn svg{width:16px;height:16px;}
+  body.qm-layout-left .qm-tool-btn[data-layout="left"],
+  body.qm-layout-top .qm-tool-btn[data-layout="top"]{background:var(--nav-accent);border-color:var(--nav-accent);color:#fff;}
+  body.qm-layout-top .qm-collapse-btn{display:none;}
+  .qm-avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#3B82F6,#1D4ED8);flex:none;
+    border:2px solid rgba(255,255,255,.25);display:grid;place-items:center;font-size:11px;font-weight:700;color:#fff;}
+  .qm-avatar-sm{width:32px;height:32px;font-size:10px;}
+  .qm-avatar-lg{width:44px;height:44px;font-size:13px;}
+  .qm-user-wrap{position:relative;margin-left:4px;}
+  .qm-user-btn{display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.15);
+    background:rgba(255,255,255,.08);color:#fff;border-radius:50%;width:38px;height:38px;padding:0;
+    cursor:pointer;font:inherit;transition:.15s;}
+  .qm-user-btn:hover,.qm-user-wrap:hover .qm-user-btn{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.28);
+    box-shadow:0 2px 10px rgba(0,0,0,.2);}
+  .qm-user-panel{display:none;position:absolute;top:calc(100% + 10px);right:0;width:min(92vw,300px);
+    background:var(--menu-panel);border:1px solid var(--line);border-radius:14px;box-shadow:var(--mega-shadow);
+    padding:8px;z-index:650;animation:qmSlide .16s ease;}
+  .qm-user-panel.is-open{display:block;}
+  .qm-user-head{display:flex;align-items:center;gap:12px;padding:10px 12px 12px;}
+  .qm-user-head-meta{display:flex;flex-direction:column;gap:2px;min-width:0;}
+  .qm-user-head-meta strong{font-size:13.5px;color:var(--ink);}
+  .qm-user-head-meta small{font-size:12px;color:var(--label);}
+  .qm-user-role{font-size:11px;color:var(--primary);font-weight:600;margin-top:2px;}
+  .qm-user-divider{height:1px;background:var(--line);margin:4px 8px;}
+  .qm-user-link{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:9px;
+    font-size:12.5px;font-weight:500;color:var(--ink);text-decoration:none;transition:.12s;}
+  .qm-user-link svg{width:16px;height:16px;flex:none;color:var(--label);stroke:currentColor;}
+  .qm-user-link:hover{background:var(--menu-hover);color:var(--primary);}
+  .qm-user-link:hover svg{color:var(--primary);}
+  .qm-user-logout{color:var(--danger);}
+  .qm-user-logout:hover{background:var(--danger-bg);color:var(--danger);}
+  .qm-user-logout:hover svg{color:var(--danger);}
+
+  /* premium module popup — backdrop must sit BELOW menu root (fix blur covering panel) */
+  body.qm-mega-open #qm-menu-root{z-index:650;}
+  body.qm-mega-open::before{content:"";position:fixed;inset:0;background:rgba(15,23,42,.18);
+    z-index:600;pointer-events:none;animation:qmFadeIn .15s ease;}
+  @keyframes qmFadeIn{from{opacity:0}to{opacity:1}}
+  .qm-module-mega{max-width:min(96vw,880px);min-width:300px;width:max-content;}
+  .qm-module-body.qm-module-flat{display:grid;grid-template-columns:1fr;gap:6px;padding:12px;
+    max-height:min(72vh,540px);overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;background:#fff;align-content:start;}
+  @media (min-width:540px){.qm-module-body.qm-module-flat{grid-template-columns:repeat(2,minmax(200px,1fr));}}
+  @media (min-width:960px){.qm-module-body.qm-module-flat{grid-template-columns:repeat(3,minmax(200px,1fr));}}
+  .qm-module-body.qm-module-flat::-webkit-scrollbar{width:5px;}
+  .qm-module-body.qm-module-flat::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px;}
+  .qm-mega-parent{min-width:0;border-radius:12px;grid-column:span 1;}
+  .qm-mega-parent.is-open{grid-column:1/-1;}
+  .qm-mega-parent-btn{width:100%;display:flex;align-items:center;gap:8px;border:1px solid var(--line);
+    background:#fff;font:inherit;font-size:13px;font-weight:600;color:var(--ink);
+    padding:10px 14px;border-radius:10px;cursor:pointer;text-align:left;transition:.15s;}
+  .qm-mega-parent-btn:hover{border-color:var(--menu-active-bd);background:var(--menu-hover);color:var(--primary);}
+  .qm-mega-parent.is-open > .qm-mega-parent-btn{background:var(--menu-active);border-color:var(--menu-active-bd);color:var(--primary);}
+  .qm-mega-item-text{flex:1;min-width:0;line-height:1.35;}
+  .qm-mega-parent-meta{font-size:10px;font-weight:700;color:var(--primary);background:var(--primary-lt);
+    padding:2px 8px;border-radius:999px;flex:none;}
+  .qm-mega-parent.is-open > .qm-mega-parent-btn .qm-chev{transform:rotate(90deg);color:var(--primary);}
+  .qm-mega-sublist{display:none;gap:6px;padding:8px 0 4px;margin:0;}
+  .qm-mega-parent.is-open > .qm-mega-sublist{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));animation:qmSlide .16s ease;}
+  .qm-mega-top{font-weight:600;}
+  .qm-mega-sub{font-size:12.5px;font-weight:500;padding:9px 14px;background:var(--tint);border:1px solid var(--line);border-radius:10px;}
+  .qm-mega-sub:hover{background:var(--menu-hover);border-color:var(--menu-active-bd);}
+
+  /* mega flyout panel shell */
+  .qm-mega{display:none;position:fixed;z-index:651;background:var(--menu-panel);border:1px solid rgba(255,255,255,.25);
+    border-radius:18px;box-shadow:0 28px 70px rgba(15,23,42,.24),0 10px 28px rgba(15,23,42,.12);padding:0;
+    min-width:280px;pointer-events:none;opacity:0;visibility:hidden;transform:translateY(8px) scale(.98);
+    transition:opacity .18s ease,transform .18s ease,visibility .18s;overflow:hidden;}
+  .qm-mega.is-visible{display:block;pointer-events:auto;opacity:1;visibility:visible;transform:translateY(0) scale(1);}
+  .qm-flyout.is-visible{transform:translateX(0) scale(1);}
+  .qm-mega-head{display:flex;align-items:center;gap:12px;padding:14px 18px;
+    background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 55%,#2563eb 100%);border-bottom:none;border-radius:0;}
+  .qm-mega-head-icon{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.14);
+    display:grid;place-items:center;color:#fff;flex:none;border:1px solid rgba(255,255,255,.18);}
+  .qm-mega-head-icon svg{width:18px;height:18px;}
+  .qm-mega-title{font-size:14px;font-weight:700;color:#fff;letter-spacing:-.02em;flex:1;min-width:0;}
+  .qm-mega-item{display:flex;align-items:center;padding:10px 14px;border-radius:10px;
+    font-size:13px;font-weight:500;color:var(--ink);text-decoration:none;line-height:1.35;
+    border:1px solid var(--line);background:#fff;transition:background .12s,border-color .12s,color .12s;}
+  .qm-mega-item::before{display:none;}
+  .qm-mega-item:hover{background:var(--menu-hover);color:var(--primary);border-color:var(--menu-active-bd);}
+  .qm-mega-item.is-active{background:var(--menu-active);color:var(--primary);font-weight:700;border-color:var(--menu-active-bd);}
+
+  /* sidebar flyout (left layout) */
+  .qm-flyout{position:fixed;z-index:500;display:none;opacity:0;pointer-events:none;
+    transform:translateX(-4px);transition:opacity .15s,transform .15s;}
+  .qm-flyout.is-visible{display:block;opacity:1;pointer-events:auto;transform:translateX(0);}
+
+  /* left sidebar */
+  .qm-sidebar{width:var(--qm-sidebar-w);background:var(--nav-2);color:var(--nav-text);
+    border-right:1px solid rgba(255,255,255,.06);flex:none;display:flex;flex-direction:column;
+    position:fixed;left:0;top:0;bottom:0;z-index:210;transition:width .2s ease,transform .2s ease;}
+  body.qm-layout-left{padding-left:var(--qm-sidebar-w);}
+  body.qm-layout-left.qm-sidebar-collapsed{padding-left:76px;--qm-sidebar-w:76px;}
+  body.qm-layout-left.qm-sidebar-collapsed .qm-sidebar-head .qm-logo,
+  body.qm-layout-left.qm-sidebar-collapsed .qm-mod-label,
+  body.qm-layout-left.qm-sidebar-collapsed .qm-chev{display:none;}
+  body.qm-layout-left.qm-sidebar-collapsed .qm-mod-btn{justify-content:center;padding:12px;}
+  body.qm-layout-left.qm-sidebar-collapsed .qm-mod-items{display:none!important;}
+  body.qm-layout-left .qm-top-mods{display:none;}
+  body.qm-layout-left .qm-shell .qm-sidebar{display:flex;}
+  body.qm-layout-top .qm-shell .qm-sidebar{display:none;}
+  .qm-sidebar-head{height:var(--qm-topbar-h);display:flex;align-items:center;padding:0 18px;border-bottom:1px solid rgba(255,255,255,.06);}
+  .qm-sidebar-nav{flex:1;overflow-y:auto;overflow-x:hidden;padding:10px 10px 20px;scrollbar-width:thin;}
+  .qm-sidebar-nav::-webkit-scrollbar{width:5px;}
+  .qm-sidebar-nav::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);border-radius:4px;}
+  .qm-chev{display:inline-block;font-size:10px;opacity:.55;transition:transform .18s ease,opacity .12s;}
+  .qm-mod{margin-bottom:3px;border-radius:10px;}
+  .qm-mod-btn{width:100%;display:flex;align-items:center;gap:10px;border:0;background:transparent;color:var(--nav-muted);
+    font:inherit;font-size:13px;font-weight:600;padding:10px 12px;border-radius:10px;cursor:pointer;text-align:left;}
+  .qm-mod-btn:hover{background:rgba(255,255,255,.07);color:#fff;}
+  .qm-mod-btn.is-active{background:rgba(255,255,255,.08);color:#fff;box-shadow:inset 3px 0 0 var(--nav-accent);}
+  .qm-mod.is-open > .qm-mod-btn{background:rgba(255,255,255,.06);color:#fff;}
+  .qm-mod.is-open > .qm-mod-btn .qm-chev{transform:rotate(90deg);}
+  .qm-mod-items{display:none;padding:2px 0 8px 6px;animation:qmSlide .18s ease;}
+  .qm-mod.is-open > .qm-mod-items{display:block;}
+  @keyframes qmSlide{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+  .qm-item,.qm-grp-btn{display:flex;align-items:center;width:100%;text-align:left;text-decoration:none;
+    border:0;background:transparent;font:inherit;font-size:12.5px;font-weight:500;color:rgba(226,232,240,.88);
+    padding:9px 12px 9px 36px;border-radius:9px;cursor:pointer;transition:.12s;}
+  .qm-item:hover,.qm-grp-btn:hover{background:rgba(255,255,255,.07);color:#fff;}
+  .qm-item.is-active{background:var(--nav-accent);color:#fff;font-weight:700;}
+  .qm-grp-btn{justify-content:space-between;padding-left:32px;}
+  .qm-grp.is-open > .qm-grp-btn{color:#fff;background:rgba(255,255,255,.05);}
+  .qm-grp.is-open > .qm-grp-btn .qm-chev{transform:rotate(90deg);}
+  .qm-grp-list{display:none;padding:2px 0 4px 12px;}
+  .qm-grp.is-open > .qm-grp-list{display:block;}
+  .qm-sub-item{padding-left:44px;font-size:12px;}
+
+  /* ERP theme picker */
+  .qm-theme-wrap{position:relative;}
+  .qm-theme-dot{display:block;width:14px;height:14px;border-radius:50%;border:2px solid rgba(255,255,255,.35);}
+  .qm-theme-panel{display:none;position:absolute;top:calc(100% + 8px);right:0;width:min(92vw,300px);
+    background:var(--menu-panel);border:1px solid var(--line);border-radius:14px;box-shadow:var(--mega-shadow);
+    padding:8px;z-index:600;max-height:min(70vh,420px);overflow-y:auto;}
+  .qm-theme-panel.is-open{display:block;}
+  .qm-theme-opt{width:100%;display:flex;align-items:center;gap:12px;border:0;background:transparent;
+    padding:10px 12px;border-radius:10px;cursor:pointer;text-align:left;font:inherit;transition:.12s;}
+  .qm-theme-opt:hover{background:var(--menu-hover);}
+  .qm-theme-opt.is-active{background:var(--menu-active);outline:1px solid var(--menu-active-bd);}
+  .qm-theme-sw{display:flex;gap:3px;flex:none;}
+  .qm-theme-sw i{display:block;width:18px;height:28px;border-radius:4px;}
+  .qm-theme-sw i:first-child{border-radius:6px 0 0 6px;}
+  .qm-theme-sw i:last-child{border-radius:0 6px 6px 0;}
+  .qm-theme-meta{display:flex;flex-direction:column;gap:2px;}
+  .qm-theme-meta strong{font-size:12.5px;color:var(--ink);}
+  .qm-theme-meta small{font-size:11px;color:var(--label);}
+
+  /* mobile drawer */
+  .qm-mobile-drawer{display:none!important;}
+  .qm-overlay{display:none;position:fixed;inset:0;background:rgba(15,23,42,.5);z-index:205;backdrop-filter:blur(2px);}
+  body.qm-mobile-open .qm-overlay{display:block;}
+  body.qm-mobile-open .qm-mobile-drawer{display:flex!important;transform:translateX(0)!important;}
+  .qm-mobile-drawer .qm-grp.is-open > .qm-grp-list{display:block;}
+  .qm-mobile-drawer .qm-mega{display:none!important;}
+
+  #qm-page-content{flex:1;min-height:0;}
+  .qm-main{flex:1;min-width:0;width:100%;}
+  .page-shell{width:100%;max-width:var(--form-max);}
+  body.qm-layout-left #qm-menu-root .qm-shell{align-items:stretch;}
+  body.qm-layout-left #qm-menu-root{position:sticky;top:0;z-index:200;}
+
+  /* toast — navigation feedback */
+  .qm-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(12px);
+    background:var(--nav-2);color:#fff;padding:12px 20px;border-radius:12px;font-size:13px;font-weight:500;
+    box-shadow:var(--mega-shadow);z-index:900;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;
+    max-width:min(92vw,480px);text-align:center;}
+  .qm-toast.is-show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto;}
+
+  /* action bar + chips */
+  .actionbar{background:#fff;border-bottom:1px solid var(--line);width:100%;flex:none;}
+  .ab-inner{max-width:var(--form-max);width:100%;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .badge{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--primary-dk));color:#fff;
+    font-weight:700;display:grid;place-items:center;flex:none;box-shadow:0 2px 8px rgba(37,99,235,.25);}
+  .title h1{font-size:16px;font-weight:700;margin:0;letter-spacing:-.25px;}
+  .title p{margin:2px 0 0;font-size:11.5px;color:var(--label);}
+  .svc-switch{display:none;align-items:center;gap:8px;margin-left:8px;}
+  .svc-switch label{font-size:11px;color:var(--label);font-weight:600;}
+  .svc-switch select{font:inherit;font-size:13px;font-weight:600;color:var(--primary);
+    border:1px solid var(--line);background:var(--tint);border-radius:8px;padding:7px 30px 7px 11px;
+    appearance:none;cursor:pointer;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%231D4ED8' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 10px center;}
+  .ab-right{margin-left:auto;display:flex;align-items:center;gap:9px;flex-wrap:wrap;}
+  .pill-id{background:var(--blue-bg);color:var(--blue-tx);font-size:12px;font-weight:600;
+    padding:6px 12px;border-radius:999px;white-space:nowrap;}
+  .btn{appearance:none;font:inherit;font-size:13px;font-weight:600;border-radius:9px;
+    padding:8px 16px;cursor:pointer;border:1px solid var(--line);background:#fff;color:var(--ink);transition:.12s;}
+  .btn:hover{background:var(--tint);}
+  .btn.primary{background:var(--primary);border-color:var(--primary);color:#fff;}
+  .btn.primary:hover{background:var(--primary-dk);}
+  .btn.danger{color:var(--danger);border-color:var(--danger-bd);background:var(--danger-bg);}
+  .btn.danger:hover{background:#fde8e8;}
+  .chips{background:var(--tint);border-bottom:1px solid var(--line);width:100%;flex:none;}
+  .chips-inner{max-width:var(--form-max);width:100%;margin:0 auto;padding:6px 20px;display:flex;align-items:center;
+    min-height:44px;position:relative;}
+  .chips-fab{width:36px;height:36px;flex:none;border:1px solid var(--line);background:#fff;border-radius:10px;
+    display:grid;place-items:center;cursor:pointer;color:var(--primary);transition:.15s;box-shadow:0 1px 2px rgba(15,23,42,.05);}
+  .chips-fab svg{width:18px;height:18px;}
+  .chips-fab:hover,.chips.is-open .chips-fab{background:var(--primary);color:#fff;border-color:var(--primary);}
+  .chips-panel{display:flex;align-items:center;gap:8px;overflow:hidden;max-width:0;opacity:0;pointer-events:none;
+    transition:max-width .28s ease,opacity .2s ease,margin-left .28s ease;margin-left:0;flex:1;min-width:0;}
+  .chips:hover .chips-panel,.chips.is-open .chips-panel{max-width:100%;opacity:1;pointer-events:auto;margin-left:12px;
+    overflow-x:auto;}
+  .chips-panel::-webkit-scrollbar{height:0;}
+  .chips-label{font-size:10px;font-weight:700;color:var(--label);text-transform:uppercase;letter-spacing:.05em;
+    white-space:nowrap;flex:none;padding-right:4px;}
+  .chips-list{display:flex;align-items:center;gap:6px;flex:1;min-width:0;}
+  .chip{font-size:12px;font-weight:500;color:var(--label);background:#fff;border:1px solid var(--line);
+    padding:5px 12px;border-radius:999px;white-space:nowrap;cursor:pointer;transition:.12s;flex:none;}
+  .chip:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-lt);}
+  .chip.hidden{display:none;}
+  .chips .tools{display:flex;gap:6px;flex:none;margin-left:4px;}
+  .chips .tools a{font-size:11.5px;color:var(--primary);cursor:pointer;font-weight:600;padding:5px 8px;border-radius:7px;white-space:nowrap;}
+  .chips .tools a:hover{background:#fff;}
+
+  /* ===== CONTENT — fixed chrome + scrollable form body ===== */
+  .topwrap{flex:none;z-index:80;width:100%;display:flex;flex-direction:column;align-items:center;
+    background:#fff;box-shadow:0 1px 0 var(--line);}
+  .form-scroll{flex:1;width:100%;min-height:0;overflow-y:auto;overflow-x:hidden;
+    display:flex;flex-direction:column;align-items:center;scrollbar-width:thin;
+    background:var(--page);}
+  .form-scroll::-webkit-scrollbar{width:8px;}
+  .form-scroll::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:4px;}
+  .form-scroll::-webkit-scrollbar-thumb:hover{background:#94a3b8;}
+  .wrap{max-width:var(--form-max);width:100%;margin:0 auto;padding:20px 20px 40px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    box-shadow:0 1px 2px rgba(15,23,42,.04),0 6px 20px rgba(15,23,42,.05);margin-bottom:16px;overflow:hidden;
+    transition:box-shadow .2s,border-color .2s;}
+  .card:hover{box-shadow:0 2px 4px rgba(15,23,42,.05),0 10px 28px rgba(15,23,42,.07);}
+  .card.hidden{display:none;}
+  .chead{display:flex;align-items:center;gap:12px;padding:14px 20px;cursor:pointer;user-select:none;
+    background:linear-gradient(135deg,#fff 0%,#f8fafc 100%);border-bottom:1px solid transparent;
+    position:relative;transition:background .15s;}
+  .card:not(.collapsed) .chead{border-bottom-color:var(--line-2);}
+  .chead::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--sect);border-radius:14px 0 0 0;}
+  .card.collapsed .chead::before{border-radius:14px 0 0 14px;}
+  .chead:hover{background:linear-gradient(135deg,#fff 0%,#f1f5f9 100%);}
+  .chead .tri{color:var(--label);font-size:11px;transition:transform .18s;flex:none;width:14px;}
+  .card:not(.collapsed) .tri{transform:rotate(90deg);}
+  .chead .num{width:28px;height:28px;border-radius:8px;background:var(--primary-lt);border:none;color:var(--primary);
+    display:grid;place-items:center;font-size:11px;font-weight:700;flex:none;}
+  .chead h2{font-size:13px;font-weight:700;letter-spacing:.35px;color:var(--sect);text-transform:uppercase;margin:0;flex:1;}
+  .tag{font-size:11px;font-weight:600;padding:4px 10px;border-radius:999px;flex:none;}
+  .tag.green{background:var(--green-bg);color:var(--green-tx);}
+  .tag.blue{background:var(--blue-bg);color:var(--blue-tx);}
+  .cbody{padding:6px 20px 22px;background:#fff;}
+  .card.collapsed .cbody{display:none;}
+  .card.collapsed .chead{padding-bottom:14px;}
+
+  /* stable 3-column grid — resists browser zoom collapse */
+  .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 20px;margin-top:16px;}
+  @media (max-width:1024px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+  @media (max-width:640px){.grid{grid-template-columns:minmax(0,1fr);}}
+  .field{display:flex;flex-direction:column;gap:5px;min-width:0;}
+  .field.wide{grid-column:1/-1;}
+  label{font-size:11.5px;font-weight:600;color:var(--label);}
+  label .req{color:var(--req);margin-left:1px;}
+  input[type=text],input[type=email],input[type=tel],input[type=number],input[type=date],select,textarea{
+    width:100%;font:inherit;font-size:13px;color:var(--ink);background:#fafbfc;
+    border:1px solid var(--line);border-radius:9px;padding:9px 11px;transition:border-color .12s,box-shadow .12s,background .12s;}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--primary);background:#fff;
+    box-shadow:0 0 0 3px rgba(29,78,216,.1);}
+  input[readonly]{background:var(--tint);color:#64748B;}
+  input::placeholder{color:#9aa7b4;}
+  textarea{resize:vertical;min-height:58px;}
+  select{appearance:none;padding-right:28px;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%235A6B7B' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 10px center;}
+  .phone{display:grid;grid-template-columns:72px 1fr;gap:6px;}
+  .opts{display:flex;gap:14px;flex-wrap:wrap;align-items:center;min-height:36px;}
+  .opt{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--ink);cursor:pointer;}
+  .opt input{accent-color:var(--primary);width:15px;height:15px;}
+  .chk{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink);cursor:pointer;}
+  .chk input{accent-color:var(--primary);width:15px;height:15px;}
+
+  .sub{display:flex;align-items:center;gap:9px;margin:16px 0 4px;font-size:11px;letter-spacing:.4px;
+    text-transform:uppercase;color:var(--sect);font-weight:700;}
+  .sub::after{content:"";flex:1;height:1px;background:var(--line-2);}
+
+  /* tables */
+  .tbl{width:100%;border-collapse:collapse;margin-top:12px;font-size:12.5px;border:1px solid var(--line);border-radius:9px;overflow:hidden;}
+  .tbl th{background:var(--nav);color:#fff;text-align:left;padding:9px 12px;font-size:11.5px;font-weight:600;}
+  .tbl td{padding:7px 12px;border-top:1px solid var(--line-2);}
+  .tbl tbody tr:nth-child(even){background:var(--tint);}
+  .tbl .num{text-align:right;font-variant-numeric:tabular-nums;}
+  .tbl input,.tbl select{padding:6px 8px;}
+
+  /* checklist */
+  .ck{border:1px solid var(--line);border-radius:9px;overflow:hidden;margin-top:4px;}
+  .ck-h,.ck-r{display:grid;grid-template-columns:1fr 120px 1.1fr;gap:12px;align-items:center;padding:9px 13px;}
+  .ck-h{background:var(--nav);color:#fff;font-size:11.5px;font-weight:600;}
+  .ck-r{border-top:1px solid var(--line-2);}
+  .ck-r:nth-child(odd){background:var(--tint);}
+  .ck-r .q{font-size:12.5px;color:var(--ink);}
+  .ck-r .yn{display:flex;gap:12px;}
+
+  /* tabs */
+  .tabs{display:flex;gap:4px;margin-top:14px;}
+  .tab{padding:7px 15px;border:1px solid var(--line);border-bottom:none;border-radius:9px 9px 0 0;
+    background:var(--tint);font-size:12.5px;font-weight:600;color:var(--label);cursor:pointer;}
+  .tab.on{background:var(--nav);color:#fff;border-color:var(--nav);}
+  .pane{display:none;}.pane.on{display:block;}
+
+  @media (max-width:900px){
+    .qm-hamburger{display:flex;}
+    body.qm-layout-left{padding-left:0!important;}
+    .qm-shell .qm-sidebar{display:none!important;}
+    .qm-mobile-drawer{display:flex!important;position:fixed;left:0;top:0;bottom:0;width:min(88vw,320px);
+      transform:translateX(-105%);z-index:220;}
+    .qm-collapse-btn,.qm-tool-btn[data-layout="left"]{display:none;}
+    .qm-search{width:100px;}
+    .qm-mod-label{display:inline;}
+    .qm-user-brief{display:none;}
+    .topwrap{box-shadow:0 1px 0 var(--line);}
+    .qm-module-body.qm-module-flat{grid-template-columns:1fr;}
+  }
+  @media (max-width:760px){
+    .grid{grid-template-columns:1fr;}
+    .ck-h,.ck-r{grid-template-columns:1fr;gap:7px;}
+    .title p{display:none;}
+    .qm-top-mod .qm-mod-label{display:none;}
+    .qm-top-mod{padding:8px 10px;}
+    .ab-right .btn:not(.primary){display:none;}
+  }
+  @media (min-width:1920px){
+    :root{--qm-sidebar-w:280px;}
+    body{font-size:14.5px;}
+  }
+  @media (min-width:2560px){
+    :root{--qm-sidebar-w:300px;--qm-topbar-h:58px;--qm-subbar-h:48px;}
+    body{font-size:15px;}
+    .qm-top-mod,.qm-sub-link{padding-top:10px;padding-bottom:10px;}
+  }
+  @media (min-width:3840px){
+    :root{--qm-sidebar-w:340px;--qm-topbar-h:64px;--qm-subbar-h:52px;}
+    body{font-size:16px;}
+    .qm-mega-cols-5 .qm-mega-grid{grid-template-columns:repeat(5,minmax(200px,1fr));}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+</style>
+</head>
+<body class="qm-layout-top">
+
+<div id="qm-menu-root" aria-live="polite"></div>
+
+<div id="qm-page-content">
+<div class="topwrap">
+  <!-- page action bar -->
+  <div class="actionbar">
+    <div class="ab-inner">
+      <div class="badge">L</div>
+      <div class="title"><h1>Common Enquiry</h1><p>Logistics CRM / ERP · Unified intake form</p></div>
+      <div class="svc-switch">
+        <label>Service</label>
+        <select id="svc">
+          <option value="moving">Moving</option>
+          <option value="relocation">Relocation</option>
+          <option value="packing">Packing</option>
+          <option value="storage">Storage</option>
+          <option value="ff">Freight Forwarding</option>
+          <option value="nvocc">NVOCC</option>
+          <option value="customs">Customs</option>
+          <option value="general">General Services</option>
+        </select>
+      </div>
+      <div class="ab-right">
+        <span class="pill-id">CT-ENQ-CTI-2026-00408</span>
+        <button class="btn">Back</button>
+        <button class="btn danger">Delete</button>
+        <button class="btn primary">Save Enquiry</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- section jump — icon only, expand on hover -->
+  <div class="chips" id="chips-bar">
+    <div class="chips-inner">
+      <button type="button" class="chips-fab" id="chipsFab" title="Section navigation" aria-label="Section navigation" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+      </button>
+      <div class="chips-panel" id="chipsPanel">
+        <span class="chips-label">Jump to</span>
+        <div class="chips-list" id="chips"></div>
+        <div class="tools"><a id="expandAll">Expand all</a><a id="collapseAll">Collapse all</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="form-scroll" id="form-scroll">
+<div class="wrap" id="content">
+
+  <!-- 1 ENQUIRY HEADER -->
+  <section class="card" id="s-header" data-svc="all" data-title="Header">
+    <div class="chead"><span class="tri">▸</span><span class="num">1</span><h2>Enquiry Header</h2><span class="tag green">Always shown</span></div>
+    <div class="cbody"><div class="grid">
+      <div class="field"><label>Service Type<span class="req">*</span></label>
+        <select id="svc2">
+          <option value="moving">Moving</option>
+          <option value="relocation">Relocation</option>
+          <option value="packing">Packing</option>
+          <option value="storage">Storage</option>
+          <option value="ff">Freight Forwarding</option>
+          <option value="nvocc">NVOCC</option>
+          <option value="customs">Customs</option>
+          <option value="general">General Services</option>
+        </select></div>
+      <div class="field"><label>Customer Type<span class="req">*</span></label>
+        <select><option>Corporate</option><option>Individual</option><option>Government</option><option>Walk-in</option></select></div>
+      <div class="field"><label>Branch<span class="req">*</span></label>
+        <select><option>B2024003 — CARGO TRACK JV</option><option>B2024001 — Head Office</option><option>B2024002 — Riyadh</option></select></div>
+      <div class="field"><label>Enquiry Date<span class="req">*</span></label><input type="date" value="2026-06-22"></div>
+      <div class="field"><label>Product Type</label><select id="productType"></select></div>
+      <div class="field"><label>Goods Type</label>
+        <select><option>Household Goods</option><option>Commercial Goods</option><option>Personal Effects</option><option>Dangerous Goods</option><option>Perishable</option></select></div>
+      <div class="field"><label>Enquiry Mode</label><select><option>Email</option><option>Phone</option><option>In-person</option><option>WhatsApp</option></select></div>
+      <div class="field"><label>Source of Contact</label><select><option>Website</option><option>Referral</option><option>Walk-in</option><option>Call</option></select></div>
+      <div class="field"><label>Referred By</label>
+        <div class="opts"><label class="opt"><input type="radio" name="ref">Contact</label><label class="opt"><input type="radio" name="ref">Employee</label></div></div>
+      <div class="field"><label>Reference No</label><input type="text" placeholder="External ref / PO"></div>
+    </div></div>
+  </section>
+
+  <!-- 2 CLIENT -->
+  <section class="card collapsed" id="s-client" data-svc="all" data-title="Client">
+    <div class="chead"><span class="tri">▸</span><span class="num">2</span><h2>Client Details</h2><span class="tag green">Always shown</span></div>
+    <div class="cbody"><div class="grid">
+      <div class="field"><label>Name<span class="req">*</span></label><input type="text" value="TARGET ARABIA COMPANY"></div>
+      <div class="field"><label>Title / Rank</label><select><option></option><option>Mr.</option><option>Ms.</option><option>Dr.</option></select></div>
+      <div class="field"><label>Contact Person</label><input type="text" value="INFO@TARGET-ARABIA.COM"></div>
+      <div class="field"><label>Account Manager</label><select><option>EMP-01 — MOHAMED ANAZ</option><option>EMP-02 — SALES TEAM</option></select></div>
+      <div class="field"><label>Phone</label><div class="phone"><input type="text" placeholder="+966"><input type="text"></div></div>
+      <div class="field"><label>Mobile</label><input type="text"></div>
+      <div class="field"><label>Email</label><input type="email"></div>
+      <div class="field"><label>Associate</label>
+        <div class="opts"><label class="opt"><input type="radio" name="cAssoc" checked>Corporate</label><label class="opt"><input type="radio" name="cAssoc">Customer</label><label class="opt"><input type="radio" name="cAssoc">None</label></div></div>
+      <div class="field wide"><label>Address</label><input type="text" value="DARSS 1"></div>
+    </div></div>
+  </section>
+
+  <!-- 3 SHIPPER / CONSIGNOR -->
+  <section class="card collapsed" id="s-shipper" data-svc="moving relocation packing storage ff nvocc customs" data-title="Shipper">
+    <div class="chead"><span class="tri">▸</span><span class="num">3</span><h2>Shipper / Consignor</h2><span class="tag blue" id="t-shipper">Shipper</span></div>
+    <div class="cbody">
+      <label class="chk" style="margin-top:12px"><input type="checkbox">Is Military</label>
+      <div class="grid">
+        <div class="field"><label>Name</label><input type="text" value="AUTO WORLD"></div>
+        <div class="field"><label>Title / Rank</label><select><option>Mr.</option><option>Ms.</option></select></div>
+        <div class="field"><label>Contact Person</label><input type="text" value="P200600742 — ADHIL"></div>
+        <div class="field"><label>Mobile</label><input type="text" value="1252525252"></div>
+        <div class="field"><label>Email</label><input type="email" value="addil@qm.com"></div>
+        <div class="field"><label>Phone</label><div class="phone"><input type="text" placeholder="+966"><input type="text"></div></div>
+        <div class="field wide"><label>Address</label><input type="text" value="ADRESS 3, RIYADH, SAUDI ARABIA"></div>
+        <div class="field"><label>&nbsp;</label><label class="chk"><input type="checkbox" checked>Associate</label></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 CONSIGNEE -->
+  <section class="card collapsed" id="s-consignee" data-svc="ff nvocc customs" data-title="Consignee">
+    <div class="chead"><span class="tri">▸</span><span class="num">4</span><h2>Consignee Details</h2><span class="tag blue">Freight</span></div>
+    <div class="cbody"><div class="grid">
+      <div class="field"><label>Consignee Name</label><input type="text"></div>
+      <div class="field"><label>Contact Person</label><input type="text"></div>
+      <div class="field"><label>Mobile</label><input type="text"></div>
+      <div class="field"><label>Email</label><input type="email"></div>
+      <div class="field"><label>Country</label><input type="text"></div>
+      <div class="field"><label>Tax / VAT Reg. No.</label><input type="text"></div>
+      <div class="field wide"><label>Address</label><input type="text"></div>
+    </div></div>
+  </section>
+
+  <!-- 5 INDIVIDUAL -->
+  <section class="card collapsed" id="s-individual" data-svc="moving relocation packing" data-title="Individual">
+    <div class="chead"><span class="tri">▸</span><span class="num">5</span><h2>Individual Details</h2><span class="tag blue">Move party</span></div>
+    <div class="cbody"><div class="grid">
+      <div class="field"><label>Title / Rank</label><select><option>Mr.</option><option>Ms.</option></select></div>
+      <div class="field"><label>First Name</label><input type="text" value="ARVEE"></div>
+      <div class="field"><label>Middle Name</label><input type="text"></div>
+      <div class="field"><label>Last Name</label><input type="text" value="LEDESMA"></div>
+      <div class="field"><label>Email</label><input type="email" value="al@acs.ae"></div>
+      <div class="field"><label>Mobile</label><input type="text" value="505013718"></div>
+      <div class="field"><label>Phone</label><input type="text"></div>
+      <div class="field"><label>Country</label><select><option>ARUBA</option><option>SAUDI ARABIA</option><option>UAE</option></select></div>
+      <div class="field"><label>City</label><select><option>ARUBA</option></select></div>
+      <div class="field wide"><label>Address</label><input type="text" value="ASAAS"></div>
+    </div></div>
+  </section>
+
+  <!-- 6 SURVEY -->
+  <section class="card collapsed" id="s-survey" data-svc="moving relocation packing" data-title="Survey">
+    <div class="chead"><span class="tri">▸</span><span class="num">6</span><h2>Survey &amp; Move Details</h2></div>
+    <div class="cbody"><div class="grid">
+      <div class="field"><label>Survey Required?</label><label class="chk" style="min-height:36px"><input type="checkbox" checked>Survey</label></div>
+      <div class="field"><label>Survey Type</label><select><option>Physical</option><option>Virtual</option><option>None</option></select></div>
+      <div class="field"><label>Survey Date</label><input type="date" value="2026-06-22"></div>
+      <div class="field"><label>&nbsp;</label><label class="chk" style="min-height:36px"><input type="checkbox">Same as Communication Address</label></div>
+    </div></div>
+  </section>
+
+  <!-- 7 ORIGIN -->
+  <section class="card collapsed" id="s-origin" data-svc="moving relocation packing ff nvocc customs" data-title="Origin">
+    <div class="chead"><span class="tri">▸</span><span class="num">7</span><h2>Origin / Pick-up</h2><span class="tag blue" id="t-origin">Pick-up</span></div>
+    <div class="cbody"><div class="grid">
+      <div class="field wide"><label>Address</label><input type="text" value="ORDIGIN ADDRESS"></div>
+      <div class="field"><label>Country</label><input type="text" value="CAPE VERDE"></div>
+      <div class="field"><label>State</label><input type="text"></div>
+      <div class="field"><label>City</label><input type="text" value="SAO NICOLAU"></div>
+      <div class="field"><label>Location</label><input type="text"></div>
+      <div class="field"><label>ZIP / Post Code</label><input type="text" value="123225"></div>
+    </div></div>
+  </section>
+
+  <!-- 8 DESTINATION -->
+  <section class="card collapsed" id="s-dest" data-svc="moving relocation packing ff nvocc customs" data-title="Destination">
+    <div class="chead"><span class="tri">▸</span><span class="num">8</span><h2>Destination / Delivery</h2><span class="tag blue" id="t-dest">Delivery</span></div>
+    <div class="cbody">
+      <div class="grid">
+        <div class="field wide"><label>Address</label><input type="text" value="ADRESSS"></div>
+        <div class="field"><label>Country</label><input type="text" value="BURKINA FASO"></div>
+        <div class="field"><label>State</label><input type="text"></div>
+        <div class="field"><label>City</label><input type="text" value="BOBO DIOULASSO"></div>
+        <div class="field"><label>Location</label><input type="text"></div>
+        <div class="field"><label>ZIP / Post Code</label><input type="text"></div>
+      </div>
+      <div class="sub">Route Summary</div>
+      <table class="tbl"><thead><tr><th>Leg</th><th>Origin</th><th>Destination</th><th style="width:80px">Action</th></tr></thead>
+        <tbody><tr><td>1</td><td>CAPE VERDE, SAO NICOLAU</td><td>BURKINA FASO, BOBO DIOULASSO</td><td><a style="color:var(--primary);cursor:pointer">Edit</a></td></tr></tbody></table>
+    </div>
+  </section>
+
+  <!-- 9 CARGO -->
+  <section class="card collapsed" id="s-cargo" data-svc="ff nvocc customs" data-title="Cargo">
+    <div class="chead"><span class="tri">▸</span><span class="num">9</span><h2>Cargo &amp; Shipment</h2><span class="tag blue">Freight</span></div>
+    <div class="cbody"><div class="grid">
+      <div class="field"><label>Direction</label><select><option>Export</option><option>Import</option><option>Cross-trade</option></select></div>
+      <div class="field"><label>Mode of Transport</label><select><option>Sea — FCL</option><option>Sea — LCL</option><option>Air</option><option>Road</option><option>Rail</option></select></div>
+      <div class="field"><label>Incoterm</label><select><option>EXW</option><option>FOB</option><option>CIF</option><option>CFR</option><option>DAP</option><option>DDP</option></select></div>
+      <div class="field"><label>HS / Commodity Code</label><input type="text"></div>
+      <div class="field"><label>No. of Packages</label><input type="number" value="0"></div>
+      <div class="field"><label>Package Type</label><select><option>Pallets</option><option>Cartons</option><option>Crates</option><option>Drums</option><option>Bulk</option></select></div>
+      <div class="field"><label>Gross Weight (kg)</label><input type="number" value="0.000"></div>
+      <div class="field"><label>Volume (CBM)</label><input type="number" value="0.000"></div>
+      <div class="field"><label>Chargeable Weight</label><input type="number" value="0.000"></div>
+      <div class="field"><label>Container Type</label><select><option>20' GP</option><option>40' GP</option><option>40' HC</option><option>Reefer</option><option>LCL</option></select></div>
+      <div class="field"><label>Container Count</label><input type="number" value="0"></div>
+      <div class="field"><label>Hazardous (DG)</label><div class="opts"><label class="opt"><input type="radio" name="haz">Yes</label><label class="opt"><input type="radio" name="haz" checked>No</label></div></div>
+      <div class="field"><label>Temp Controlled</label><div class="opts"><label class="opt"><input type="radio" name="temp">Yes</label><label class="opt"><input type="radio" name="temp" checked>No</label></div></div>
+      <div class="field wide"><label>Cargo Description</label><input type="text" placeholder="e.g. Auto spare parts, palletised"></div>
+    </div></div>
+  </section>
+
+  <!-- 10 VESSEL -->
+  <section class="card collapsed" id="s-vessel" data-svc="nvocc" data-title="Vessel">
+    <div class="chead"><span class="tri">▸</span><span class="num">10</span><h2>Vessel &amp; B/L Routing</h2><span class="tag blue">NVOCC</span></div>
+    <div class="cbody"><div class="grid">
+      <div class="field"><label>Carrier / Line</label><input type="text"></div>
+      <div class="field"><label>Vessel Name</label><input type="text"></div>
+      <div class="field"><label>Voyage No.</label><input type="text"></div>
+      <div class="field"><label>B/L Type</label><select><option>Master B/L</option><option>House B/L</option><option>Sea Waybill</option></select></div>
+      <div class="field"><label>B/L Number</label><input type="text"></div>
+      <div class="field"><label>Booking No.</label><input type="text"></div>
+      <div class="field"><label>Port of Loading (POL)</label><input type="text"></div>
+      <div class="field"><label>Port of Discharge (POD)</label><input type="text"></div>
+      <div class="field"><label>Final Destination</label><input type="text"></div>
+      <div class="field"><label>ETD</label><input type="date"></div>
+      <div class="field"><label>ETA</label><input type="date"></div>
+      <div class="field"><label>Transit Time (days)</label><input type="number"></div>
+    </div></div>
+  </section>
+
+  <!-- 11 CUSTOMS -->
+  <section class="card collapsed" id="s-customs" data-svc="customs" data-title="Customs">
+    <div class="chead"><span class="tri">▸</span><span class="num">11</span><h2>Customs Clearance</h2><span class="tag blue">Customs</span></div>
+    <div class="cbody"><div class="grid">
+      <div class="field"><label>Clearance Type</label><select><option>Import</option><option>Export</option><option>Transit</option><option>Re-export</option><option>Temporary Admission</option></select></div>
+      <div class="field"><label>Declaration Type</label><select><option>Final</option><option>Provisional</option><option>Bonded</option></select></div>
+      <div class="field"><label>Customs Office / Port</label><input type="text"></div>
+      <div class="field"><label>HS Code</label><input type="text"></div>
+      <div class="field"><label>Customs Value</label><input type="number" value="0.00"></div>
+      <div class="field"><label>Duty Rate (%)</label><input type="number"></div>
+      <div class="field"><label>VAT / Tax (%)</label><input type="number"></div>
+      <div class="field"><label>Estimated Duty</label><input type="number" value="0.00"></div>
+      <div class="field"><label>Permit / License Req.</label><div class="opts"><label class="opt"><input type="radio" name="permit">Yes</label><label class="opt"><input type="radio" name="permit" checked>No</label></div></div>
+      <div class="field"><label>Physical Inspection</label><div class="opts"><label class="opt"><input type="radio" name="insp">Yes</label><label class="opt"><input type="radio" name="insp" checked>No</label></div></div>
+      <div class="field"><label>Bond / Guarantee</label><input type="text"></div>
+    </div></div>
+  </section>
+
+  <!-- 12 STORAGE -->
+  <section class="card collapsed" id="s-storage" data-svc="storage" data-title="Storage">
+    <div class="chead"><span class="tri">▸</span><span class="num">12</span><h2>Storage Details</h2><span class="tag blue">Storage</span></div>
+    <div class="cbody">
+      <div class="grid">
+        <div class="field"><label>Storage Type</label><select><option>Normal</option><option>Climate Controlled</option><option>Bonded</option><option>Open Yard</option></select></div>
+        <div class="field"><label>Warehouse Address</label><select><option>SAO NICOLAU</option><option>Jeddah DC-1</option></select></div>
+        <div class="field"><label>Duration</label><input type="number" value="12"></div>
+        <div class="field"><label>Frequency</label><select><option>Day</option><option>Week</option><option>Month</option></select></div>
+        <div class="field"><label>Storage Mode</label><select><option></option><option>Pallet</option><option>Rack</option><option>Bulk</option></select></div>
+        <div class="field"><label>Billing Mode</label><select><option>per unit</option><option>flat rate</option><option>per CBM</option></select></div>
+        <div class="field"><label>Product Type</label><select><option>Storage</option><option>Bonded Storage</option></select></div>
+      </div>
+      <div class="sub">Storage Items</div>
+      <table class="tbl"><thead><tr><th>Storage Type</th><th>Address</th><th class="num">Volume</th><th>Unit</th><th class="num">Weight</th><th>Unit</th></tr></thead>
+        <tbody><tr><td>Long Term</td><td>SAO NICOLAU</td><td class="num">0.000</td><td>CBM</td><td class="num">0.000</td><td>KG</td></tr></tbody></table>
+    </div>
+  </section>
+
+  <!-- 13 PACKING -->
+  <section class="card collapsed" id="s-packing" data-svc="packing" data-title="Packing">
+    <div class="chead"><span class="tri">▸</span><span class="num">13</span><h2>Packing &amp; Crating</h2><span class="tag blue">Packing</span></div>
+    <div class="cbody"><div class="grid">
+      <div class="field"><label>Packing Type</label><select><option>Standard</option><option>Export Wrap</option><option>Wooden Crating</option><option>Vacuum</option></select></div>
+      <div class="field"><label>Crating Required</label><div class="opts"><label class="opt"><input type="radio" name="crate">Yes</label><label class="opt"><input type="radio" name="crate" checked>No</label></div></div>
+      <div class="field"><label>No. of Items</label><input type="number" value="0"></div>
+      <div class="field"><label>Fragile Items</label><div class="opts"><label class="opt"><input type="radio" name="frag">Yes</label><label class="opt"><input type="radio" name="frag" checked>No</label></div></div>
+      <div class="field"><label>Disassembly Required</label><div class="opts"><label class="opt"><input type="radio" name="disasm">Yes</label><label class="opt"><input type="radio" name="disasm" checked>No</label></div></div>
+      <div class="field"><label>Materials</label><input type="text" placeholder="bubble wrap, cartons..."></div>
+    </div></div>
+  </section>
+
+  <!-- 14 GENERAL SCOPE -->
+  <section class="card collapsed" id="s-genscope" data-svc="general" data-title="Scope">
+    <div class="chead"><span class="tri">▸</span><span class="num">14</span><h2>Service Scope</h2><span class="tag blue">General</span></div>
+    <div class="cbody"><div class="grid">
+      <div class="field"><label>Service Category</label><select><option>Manpower</option><option>Equipment Rental</option><option>Documentation</option><option>Inspection</option><option>Other</option></select></div>
+      <div class="field"><label>Estimated Units</label><input type="number" value="0"></div>
+      <div class="field wide"><label>Scope Description</label><textarea placeholder="Describe the requested service..."></textarea></div>
+    </div></div>
+  </section>
+
+  <!-- 15 ADDITIONAL -->
+  <section class="card collapsed" id="s-additional" data-svc="moving relocation packing" data-title="Checklist">
+    <div class="chead"><span class="tri">▸</span><span class="num">15</span><h2>Additional Information</h2></div>
+    <div class="cbody">
+      <div class="tabs"><div class="tab on" data-tab="gen">General</div><div class="tab" data-tab="ori">Origin</div><div class="tab" data-tab="des">Destination</div></div>
+      <div class="pane on" data-pane="gen"><div class="ck">
+        <div class="ck-h"><div>Checklist</div><div>Answer</div><div>Details</div></div>
+        <div class="ck-r"><div class="q">Hoisting / Cartel services</div><div class="yn"><label class="opt"><input type="radio" name="c1">Yes</label><label class="opt"><input type="radio" name="c1">No</label></div><input type="text"></div>
+        <div class="ck-r"><div class="q">Short / Long carry</div><div class="yn"><label class="opt"><input type="radio" name="c2">Yes</label><label class="opt"><input type="radio" name="c2">No</label></div><input type="text"></div>
+        <div class="ck-r"><div class="q">Insurance HHG</div><div class="yn"><label class="opt"><input type="radio" name="c3">Yes</label><label class="opt"><input type="radio" name="c3">No</label></div><input type="text"></div>
+        <div class="ck-r"><div class="q">Motor bike / scooter</div><div class="yn"><label class="opt"><input type="radio" name="c4">Yes</label><label class="opt"><input type="radio" name="c4">No</label></div><input type="text"></div>
+        <div class="ck-r"><div class="q">Crate motor bike / scooter</div><div class="yn"><label class="opt"><input type="radio" name="c5">Yes</label><label class="opt"><input type="radio" name="c5">No</label></div><input type="text"></div>
+        <div class="ck-r"><div class="q">Any goods packed by owner?</div><div class="yn"><label class="opt"><input type="radio" name="c6">Yes</label><label class="opt"><input type="radio" name="c6">No</label></div><input type="text"></div>
+        <div class="ck-r"><div class="q">Restriction in weight / volume / budget?</div><div class="yn"><label class="opt"><input type="radio" name="c7">Yes</label><label class="opt"><input type="radio" name="c7">No</label></div><input type="text"></div>
+        <div class="ck-r"><div class="q">Require insurance for items?</div><div class="yn"><label class="opt"><input type="radio" name="c8">Yes</label><label class="opt"><input type="radio" name="c8">No</label></div><input type="text"></div>
+      </div></div>
+      <div class="pane" data-pane="ori"><div class="ck">
+        <div class="ck-h"><div>Origin checklist</div><div>Answer</div><div>Details</div></div>
+        <div class="ck-r"><div class="q">Elevator at origin?</div><div class="yn"><label class="opt"><input type="radio" name="o1">Yes</label><label class="opt"><input type="radio" name="o1">No</label></div><input type="text"></div>
+        <div class="ck-r"><div class="q">Truck access / parking?</div><div class="yn"><label class="opt"><input type="radio" name="o2">Yes</label><label class="opt"><input type="radio" name="o2">No</label></div><input type="text"></div>
+        <div class="ck-r"><div class="q">Floor / stairs count</div><div class="yn"><label class="opt"><input type="radio" name="o3">Yes</label><label class="opt"><input type="radio" name="o3">No</label></div><input type="text"></div>
+      </div></div>
+      <div class="pane" data-pane="des"><div class="ck">
+        <div class="ck-h"><div>Destination checklist</div><div>Answer</div><div>Details</div></div>
+        <div class="ck-r"><div class="q">Elevator at destination?</div><div class="yn"><label class="opt"><input type="radio" name="d1">Yes</label><label class="opt"><input type="radio" name="d1">No</label></div><input type="text"></div>
+        <div class="ck-r"><div class="q">Permit needed for delivery?</div><div class="yn"><label class="opt"><input type="radio" name="d2">Yes</label><label class="opt"><input type="radio" name="d2">No</label></div><input type="text"></div>
+        <div class="ck-r"><div class="q">Unpacking required?</div><div class="yn"><label class="opt"><input type="radio" name="d3">Yes</label><label class="opt"><input type="radio" name="d3">No</label></div><input type="text"></div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- 16 ALLOWANCE -->
+  <section class="card collapsed" id="s-allowance" data-svc="moving relocation ff" data-title="Allowance">
+    <div class="chead"><span class="tri">▸</span><span class="num">16</span><h2>Transport Allowance</h2></div>
+    <div class="cbody"><table class="tbl"><thead><tr><th>Transport</th><th>Volume / Weight</th><th style="width:150px">Unit</th></tr></thead><tbody>
+      <tr><td>Road</td><td><input type="text"></td><td><select><option>CFT Net</option><option>CBM</option><option>KG</option></select></td></tr>
+      <tr><td>Air</td><td><input type="text"></td><td><select><option>LBS Net</option><option>KG</option></select></td></tr>
+      <tr><td>Sea</td><td><input type="text"></td><td><select><option>CFT Net</option><option>CBM</option></select></td></tr>
+      <tr><td>Rail</td><td><input type="text"></td><td><select><option>CFT Net</option><option>CBM</option></select></td></tr>
+    </tbody></table></div>
+  </section>
+
+  <!-- 17 GENERAL INFO -->
+  <section class="card collapsed" id="s-geninfo" data-svc="all" data-title="General Info">
+    <div class="chead"><span class="tri">▸</span><span class="num">17</span><h2>General Information</h2><span class="tag green">Always shown</span></div>
+    <div class="cbody"><div class="grid">
+      <div class="field wide"><label>Payment By</label>
+        <div class="opts"><label class="opt"><input type="radio" name="pay">Self</label><label class="opt"><input type="radio" name="pay" checked>Corporate</label><label class="opt"><input type="radio" name="pay">Associate Corporate</label></div></div>
+      <div class="field"><label>Status</label><select><option>Active</option><option>Pending</option><option>Won</option><option>Lost</option></select></div>
+      <div class="field"><label>Assign To</label><select><option>QM121 — QUICKMOVE</option></select></div>
+      <div class="field"><label>RMC</label><input type="text"></div>
+      <div class="field"><label>Pipeline Amount</label><input type="number" value="0.00"></div>
+      <div class="field"><label>Lead Generator</label><input type="text"></div>
+      <div class="field"><label>Created By</label><input type="text" value="QUICKMOVE · 22-06-2026 5:42 PM" readonly></div>
+      <div class="field wide"><label>Sales Note</label><textarea></textarea></div>
+    </div></div>
+  </section>
+
+</div>
+
+</div><!-- /form-scroll -->
+
+</div><!-- /qm-page-content -->
+
+<script>window.QM_DEMO_MODE = true;</script>
+<script src="qm-themes.js"></script>
+<script src="sitemap-menu.js"></script>
+<script>QMinitMenu({ activeModule: "Sales", activeMenuTitle: "Enquiry" });</script>
+<script>
+(function(){
+  "use strict";
+  var PRODUCTS={
+    moving:["Domestic Moving","International Moving","Office Move","Local Move"],
+    relocation:["Corporate Relocation","Employee Relocation","Pet Relocation","Vehicle Relocation"],
+    packing:["Full Packing","Partial Packing","Export Packing","Crating Only"],
+    storage:["Storage","Bonded Storage","Records Storage","Self Storage"],
+    ff:["Sea Freight","Air Freight","Land Freight","Project Cargo"],
+    nvocc:["FCL","LCL","Consolidation","Co-loading"],
+    customs:["Import Clearance","Export Clearance","Transit","Re-export"],
+    general:["Manpower","Equipment Rental","Documentation","Inspection"]
+  };
+  var LABELS={moving:"Moving",relocation:"Relocation",packing:"Packing",storage:"Storage",
+    ff:"Freight Forwarding",nvocc:"NVOCC",customs:"Customs",general:"General Services"};
+  var CONTEXT={
+    ff:{shipper:"Shipper",origin:"Port of Loading",dest:"Port of Discharge"},
+    nvocc:{shipper:"Shipper",origin:"Port of Loading",dest:"Port of Discharge"},
+    customs:{shipper:"Importer/Exporter",origin:"Origin",dest:"Destination"},
+    storage:{shipper:"Consignor",origin:"Pick-up",dest:"Delivery"},
+    moving:{shipper:"Shipper",origin:"Pick-up",dest:"Delivery"},
+    relocation:{shipper:"Shipper",origin:"Pick-up",dest:"Delivery"},
+    packing:{shipper:"Shipper",origin:"Pick-up",dest:"Delivery"}
+  };
+
+  var cards=[].slice.call(document.querySelectorAll('.card'));
+  var chips=document.getElementById('chips');
+  var chipsBar=document.getElementById('chips-bar');
+  var chipsFab=document.getElementById('chipsFab');
+  var formScroll=document.getElementById('form-scroll');
+  var svc=document.getElementById('svc'), svc2=document.getElementById('svc2');
+  // mirror options into header dropdown
+  svc2.innerHTML=svc.innerHTML;
+
+  if(chipsBar){
+    chipsBar.addEventListener('mouseenter',function(){chipsBar.classList.add('is-open');if(chipsFab)chipsFab.setAttribute('aria-expanded','true');});
+    chipsBar.addEventListener('mouseleave',function(){chipsBar.classList.remove('is-open');if(chipsFab)chipsFab.setAttribute('aria-expanded','false');});
+  }
+  if(chipsFab&&chipsBar){
+    chipsFab.addEventListener('click',function(e){
+      e.stopPropagation();
+      chipsBar.classList.toggle('is-open');
+      chipsFab.setAttribute('aria-expanded',chipsBar.classList.contains('is-open')?'true':'false');
+    });
+  }
+
+  function scrollToCard(card){
+    if(!formScroll||!card)return;
+    var y=card.getBoundingClientRect().top-formScroll.getBoundingClientRect().top+formScroll.scrollTop-8;
+    formScroll.scrollTo({top:Math.max(0,y),behavior:'smooth'});
+  }
+
+  function applies(card,s){var l=card.getAttribute('data-svc');return l==='all'||l.split(' ').indexOf(s)!==-1;}
+  function setTag(id,t){var e=document.getElementById(id);if(e&&t)e.textContent=t;}
+
+  function buildChips(s){
+    [].slice.call(chips.querySelectorAll('.chip')).forEach(function(c){c.remove();});
+    cards.forEach(function(card){
+      if(!applies(card,s))return;
+      var c=document.createElement('div');c.className='chip';
+      c.textContent=card.getAttribute('data-title');
+      c.addEventListener('click',function(){
+        card.classList.remove('collapsed');
+        scrollToCard(card);
+      });
+      chips.appendChild(c);
+    });
+  }
+
+  function apply(s){
+    var n=0,firstSvc=null;
+    cards.forEach(function(card){
+      if(applies(card,s)){card.classList.remove('hidden');n++;
+        card.querySelector('.num').textContent=n;
+        if(!firstSvc&&card.getAttribute('data-svc')!=='all')firstSvc=card;
+      } else card.classList.add('hidden');
+    });
+    var ctx=CONTEXT[s]||{};
+    setTag('t-shipper',ctx.shipper);setTag('t-origin',ctx.origin);setTag('t-dest',ctx.dest);
+    var pt=document.getElementById('productType');pt.innerHTML='';
+    (PRODUCTS[s]||[]).forEach(function(o){var op=document.createElement('option');op.textContent=o;pt.appendChild(op);});
+    svc.value=s;svc2.value=s;
+    buildChips(s);
+    // keep page short: collapse all, open header + first service section
+    cards.forEach(function(c){c.classList.add('collapsed');});
+    document.getElementById('s-header').classList.remove('collapsed');
+    if(firstSvc)firstSvc.classList.remove('collapsed');
+  }
+
+  svc.addEventListener('change',function(){apply(svc.value);if(formScroll)formScroll.scrollTo({top:0,behavior:'smooth'});});
+  svc2.addEventListener('change',function(){apply(svc2.value);});
+
+  // collapse / expand on header click
+  cards.forEach(function(card){
+    card.querySelector('.chead').addEventListener('click',function(){card.classList.toggle('collapsed');});
+  });
+  document.getElementById('expandAll').addEventListener('click',function(){
+    cards.forEach(function(c){if(!c.classList.contains('hidden'))c.classList.remove('collapsed');});});
+  document.getElementById('collapseAll').addEventListener('click',function(){
+    cards.forEach(function(c){c.classList.add('collapsed');});});
+
+  // tabs
+  document.querySelectorAll('.tabs').forEach(function(tabs){
+    var body=tabs.closest('.cbody');
+    tabs.addEventListener('click',function(e){var t=e.target.closest('.tab');if(!t)return;
+      tabs.querySelectorAll('.tab').forEach(function(x){x.classList.remove('on');});t.classList.add('on');
+      var k=t.getAttribute('data-tab');
+      body.querySelectorAll('.pane').forEach(function(p){p.classList.toggle('on',p.getAttribute('data-pane')===k);});
+    });
+  });
+
+  apply('moving');
+})();
+</script>
+</body>
+</html>
